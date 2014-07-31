@@ -1,0 +1,19 @@
+Welcome to CS 311: Theory of Computation.
+
+Most of the materials for this course will be found in this repository: lecture notes, assignments, and material for studying for the final. 
+
+Let's talk about the goals of this course. By the end of this class I want everyone to
+
+  + Be able to construct basic finite automata (DFAs, NFAs, PDAs) and context-free grammars (CFGs)
+  + Understand the relationship between regular expressions and DFAs
+  + Understand the relationship between PDFs and CFGs
+  + Be able to prove that a language isn't regular using the regular language pumping lemma
+  + Be able to prove that a language isn't context-free using the context-free pumping lemma
+  + Define Turing machines to solve simple algorithmic problems
+  + Understand the distinction between decidable and recognizable languages
+  + Understand how to prove, using computational reductions, whether or not a language is decidable or recognizable
+  + Know the definitions of the language classes P and NP and what it means to be NP-complete and NP-hard
+
+We'll also explore a bit on lambda calculi and, time permitting, a bit on constructive logic and maybe even spend a little time on theorem provers. 
+
+There will be a total of five assignments in this course and a final. Each assignment will be 15% of your final grade and the final will be 25% of your grade. Assignments can be done as part of a group, but you /must/ include the names of all members of the group on the assignment. There will roughly be an assignment due every two weeks. At this point, the final may or may not be a take home.
