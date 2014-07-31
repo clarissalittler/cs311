@@ -1,0 +1,9 @@
+* HW 4: Computable Reductions
+** Problem 1
+   Show that the language $ALL_{TM}$, defined as $\{M | \text{ where } M \text{ is a TM and } L(M) = \Sigma^*\}$, is undecidable.
+** Problem 2
+   A *useless state* in a Turing machine is defined as a state that is never entered by the machine on any input. Consider the problem of detecting if a Turing machine has a useless state. Formulate this problem /as a language/ and show that the language is undecidable.
+** Problem 3
+   If $A \le_m B$ and $B$ is a regular language, is $A$ necessarily a regular language? Justify your answer.
+** Problem 4
+   ???
