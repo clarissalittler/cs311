@@ -1,0 +1,55 @@
+% Created 2014-07-31 Thu 10:34
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{clarissa}
+\date{\today}
+\title{HW1}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.3.1 (Org mode 8.2.7b)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{HW 1: Regular Languages}
+\label{sec-1}
+\subsection{Problem 1}
+\label{sec-1-1}
+Give state diagrams of DFAs for the following languages
+\begin{itemize}
+\item $\{ w | w \text{ contains the substring} ab \text{ and } ba  \}$
+\item $\{ w | w \text{ contains an even number of 0s or exactly three 1s} \}$
+\item $\{ w | w \text{ is a binary multiple of 5} \}$ Note: there's a trick to this one. As a hint there should be a total of \emph{five} states in your DFA and only one accept state. As another hint, think about reading a binary number from left to right and how you calculate the number as an iterative process.
+\end{itemize}
+\subsection{Problem 2}
+\label{sec-1-2}
+Prove or disprove the following: let $D$ be a DFA with $k$-states. If the language $L(D)$ is \emph{finite} then there exists at least one string $s$ of length at-most $k-1$ such that $D$ does not accept  $s$. Hint: what do we know about a DFA if its language is finite?
+\subsection{Problem 3}
+\label{sec-1-3}
+For any string $w=w_1 w_2 \ldots w_n$ then $w^R = w_n w_{n-1} \ldots w_1$ is the reverse of the string. For any language $A$, let $A^R = \{ w^R | w \in A \}$. Prove that if $A$ is regular then so is $A^R$. 
+\subsection{Problem 4}
+\label{sec-1-4}
+Give NFAs for the following languages 
+\begin{itemize}
+\item $\{ w | w \text{ uses all but one of } \{a,b,c,d\} \}$
+\item $\{ w | w \text{ ends with a zero} \}$ but you must use only two states
+\end{itemize}
+% Emacs 24.3.1 (Org mode 8.2.7b)
+\end{document}

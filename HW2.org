@@ -1,0 +1,14 @@
+* HW 2: Context-Free Languages
+** Problem 1
+   + Using the pumping lemma, show that the language $\{ w | w \text{ is not a palindrome} \}$ is not regular. Hint: we know that the regular languages are closed under complement.
+   + Give a CFG for the language $\{ w | w \text{ is not a palindrome} \}$ (let $\Sigma$ be  {0,1})
+   + Convert the CFG from the previous part into a PDA that decides the same language
+** Problem 2
+   The languages $\{0^s1^s2^t | s,t \ge 0 \}$ and $\{0^s1^t2^t | s,t \ge 0 \}$ are context-free. 
+   + Write CFGs for each of them
+   + By taking the intersection of these two languages, show that the context-free languages are /not/ closed under intersection. Use the context-free pumping lemma
+   + Use the result of the previous part and DeMorgan's Laws to show that the context-free languages are /alos/ not closed under complement.
+** Problem 3
+   Write a context-free grammar for { w | w is a palindrome } that is in Chomsky Normal Form. Hint: it might be easiest to make the simplest possible grammar and then /transform/ it into CNF.
+** Problem 4
+   Prove that if a $G$ is a CFG in Chomsky Normal Form then for any non-empty string $w \in L(G)$ of length $n$ then exactly $2n - 1$ steps are required to derive $w$. You don't have to prove this with induction, just give an argument based upon the restricted structure of Chomsky Normal Form. As a side note, we'll come back to this result much later in the course.

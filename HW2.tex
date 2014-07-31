@@ -1,0 +1,55 @@
+% Created 2014-07-31 Thu 10:40
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\author{clarissa}
+\date{\today}
+\title{HW2}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs 24.3.1 (Org mode 8.2.7b)}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{HW 2: Context-Free Languages}
+\label{sec-1}
+\subsection{Problem 1}
+\label{sec-1-1}
+\begin{itemize}
+\item Using the pumping lemma, show that the language $\{ w | w \text{ is not a palindrome} \}$ is not regular. Hint: we know that the regular languages are closed under complement.
+\item Give a CFG for the language $\{ w | w \text{ is not a palindrome} \}$ (let $\Sigma$ be  \{0,1\})
+\item Convert the CFG from the previous part into a PDA that decides the same language
+\end{itemize}
+\subsection{Problem 2}
+\label{sec-1-2}
+The languages $\{0^s1^s2^t | s,t \ge 0 \}$ and $\{0^s1^t2^t | s,t \ge 0 \}$ are context-free. 
+\begin{itemize}
+\item Write CFGs for each of them
+\item By taking the intersection of these two languages, show that the context-free languages are \emph{not} closed under intersection. Use the context-free pumping lemma
+\item Use the result of the previous part and DeMorgan's Laws to show that the context-free languages are \emph{alos} not closed under complement.
+\end{itemize}
+\subsection{Problem 3}
+\label{sec-1-3}
+Write a context-free grammar for \{ w | w is a palindrome \} that is in Chomsky Normal Form. Hint: it might be easiest to make the simplest possible grammar and then \emph{transform} it into CNF.
+\subsection{Problem 4}
+\label{sec-1-4}
+Prove that if a $G$ is a CFG in Chomsky Normal Form then for any non-empty string $w \in L(G)$ of length $n$ then exactly $2n - 1$ steps are required to derive $w$. You don't have to prove this with induction, just give an argument based upon the restricted structure of Chomsky Normal Form. As a side note, we'll come back to this result much later in the course.
+% Emacs 24.3.1 (Org mode 8.2.7b)
+\end{document}
