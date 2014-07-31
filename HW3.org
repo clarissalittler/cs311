@@ -1,0 +1,31 @@
+* HW 3: Turing Machines
+** Problem 1
+      A /Turing machine with left-reset/ is similar to an ordinary Turing machine but the transition function has the form
+      
+      $\delta : Q \times \Gamma \to Q \times \Gamma \times \{ R, RESET \}$
+
+The semantics of the $RESET$ move is that the Turing machine will go all the back to the left-most side of the tape, instead of just moving a step left. Prove that Turing machines with left reset are equivalent to ordinary Turing machines. To do this you'll need to 
+
+   + show that you can turn a Turing machine with left reset into an ordinary Turing machine (the easy part)
+   + show that you can turn an ordinary Turing machine into a Turing machine with left reset (the hard part)
+** Problem 2   
+Show that the Turing-decidable languages are closed under
+
+   1. union
+   2. intersection
+   3. complement
+
+** Problem 3
+   Give an informal description of the following languages
+   
+   + $\{ w | w \text{ contains twice as many 0s as 1s} \}$
+   + $\{ w | w \text{ has matching parentheses and a length that's a power of 2}\}$
+
+** Problem 4
+Show that the Turing /recognizable/ languages are closed under
+
+  + Kleene star
+  + concatenation
+  + reversal
+
+Are the /recognizable/ languages closed under complement? Can you give a counter-example?
