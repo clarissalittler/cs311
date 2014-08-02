@@ -1,7 +1,8 @@
+#+TITLE: Lecture Notes on Theory of Computation
+#+OPTIONS: toc:nil
+
 These notes were originally a series of blog posts I posted on, so they still read that way at the moment. Eventually future iterations will have the lecture notes be better formatted and more like a short book. 
 * What is computation?
-(So I've decided to post my /rough/ lecture notes for the class I'm teaching next term to this blog before I actually give the lectures. I may go back and edit them after the fact once they're done, but that's an issue of time I won't commit myself to at the present.)
-
 What is computation? That's a question I'd like to discuss a bit so we can set up the trajectory of this class. Now, [[http://en.wikipedia.org/wiki/Computation][wikipedia]] defines computation as "any type of calculation or use of computing technology in information processing", which is fine but rather dry and not illustrative. A loose, but perhaps evocative, definition of computation would be "anything you can do with a finite amount of data, using a finite number of rules, in a finite length of time". This definition encompasses a variety of thigns such as 
    + doing arithmetic problems by hand with a pen and paper
    + counting on your fingers or using physical objects
@@ -26,8 +27,6 @@ Proof by contradiction is when you prove that a theorem is true by assuming that
 
 Finally, we come to proof by induction. You have likely seen natural induction in some class prior to this. Natural induction states that if we have a property we're trying to prove, $P(n)$, which is indexed by natural numbers, then if we can prove $P(0)$ and $P(n) \to P(n+1)$ then we've prove $P(n)$ for all $n$. In other words, if we can show that the theorem is true for 0 and that if it's true for one number then it's true for the next number, then we can combine these two properties to show that the property is true for any number. Proof by induction is a far more general principle though and works for many types of data, such as binary trees or lists. In every instance, though, we'll have the same structure for the proof: there will be "base cases" (like $P(0)$) and there will be "inductive cases" (like $P(n) \to P(n+1)$), the "inductive cases" being the ones where you're allowed to assume the property is true for some "smaller" piece of data that you can use to make a "bigger" piece of data. As we come to different examples of inductive data, we will make the rules for an inductive proof over that data very explicit.
 * NFAs, DFAs, and Regular Languages
-    (there are some pictures that I'll eventually insert into these notes once I decide on what tool I want to stick with for drawing out my automata)
-
     Today we begin the class in earnest and come back to our initial class of problems: "does the string $w$ belong in the language $L$"?
 
     We start with a very /simple/ class of languages, defined by a very /simple/ class of machines called deterministic finite automata (DFA). Pictorially, a DFA is very simple: it's a graph where there is one node that is designated as the /start state/, there are zero or more nodes designated as the /accept states/, and there is exactly one line out from each node per letter of the alphabet.
@@ -88,11 +87,6 @@ Alright, hopefully it's clear that this really follows through with that "simula
 
 Of course, this wasn't the cleanest construction. Ideally for the union, we'd like to be able to say something like "try $L$ or $L'$ and if one of them works, accept". We can't do that with DFAs as we've defined them, but next time we'll tinker with our definition of a DFA to get a definition of non-deterministic finite automata (NFA) that still decides the regular languages. We'll do some more closure properties, prove that NFAs and DFAs decide the same set of languages, and perhaps work with regular expressions.
 * NFAs and Proving Equivalence of DFAs and NFAs
-Meta-Commentary: So I've taken off the numbers from these posts because as I'm going I'm realizing that 
-   1. I have no idea how long these are going to actually take once I flesh out my examples
-   2. I NEED MORE EXAMPLES, very baby-steps "let's trace through how this works" examples
-   3. I'm not allowing for questions or confusion, and I really /want/ to encourage questions in each lecture. 
-
    So, yeah, we'll have to have more examples when I actually do the NFA and DFA lectures. For now, though, I'm going to put up what I have on this post, which ended up being the longest yet, and just keep posting two of these a week and hoping that I'm staying ahead of my real lectures. Those real lectures start next week, by the way, which is a little scary.
 
      Given where we ended last time, we wanted something like a DFA but where an informal description such as "try $M$ or $N$ and if one of them works, accept" might make sense as an implementation of the union for regular languages. Now, what we really want here is the ability to make a /non-deterministic/ choice of which branch we take: $M$ or $N$. We can think of a non-deterministic choice as essentially meaning that we are trying all possible moves simultaneously, and if one of them leads to an accept state then the entire process accepts.
@@ -535,12 +529,6 @@ Neat, huh?
 We'll leave this lecture here and pick up next post with a sketch of the equivalence of PDAs and CFGs and a bit on the context free pumping lemma
 
 * Equivalence of PDAs and CFGs, CFL pumping lemma
-    :PROPERTIES:
-    :ID:       o2b:92c22dad-20b5-417d-816d-76db9e64c6d7
-    :POST_DATE: [2014-04-16 Wed 14:41]
-    :POSTID:   195
-    :BLOG:     inconsistentuniverse
-    :END:
     So we've introduced PDAs and gone through a few simple examples of them. We've also asserted, repeatedly, that the PDAs are equivalent to CFGs in describing the context free languages. Not we need to make good on that assertion. We'll really only cover one side of the equation in detail, since it's the more mechanically interesting side as it tells us how to convert a CFG where matching can be seen as a proof search problem to a straight forward machine where the computational time is going to be proportial to the size of the input. 
 
     So we'll show how to convert a CFG into a PDA. Conceptually, we want to "simulate" the CFG's rules as part of the rules of the PDA. What we'll do is let both /variables and terminals/ be a part of our stack alphabet $\Gamma$, but our input alphabet $\Sigma$ will simply be the set of terminals. When we have a variable on the top of the stack we'll pop it and push back on, non-deterministically, the right hand side of one of that variable's expansion rules. Whenever we see a terminal on the top of the stack, we consume it. Finally, when the stack is empty we move to the accept state. Gosh, if we need the stack to be empty at the end of an accept state that means we should push on a special symbol before we begin our computation. Let's call it $!$. We also need to push onto the stack, before doing anything else, the start symbol of the grammar in order to get the whole simulation primed. This means that we'll have three "main" states, and other states in order to handle the pushing of symbols involved. 
