@@ -1,4 +1,4 @@
-These notes were originally a series of blog posts I posted on, so they still read that way at the moment. Eventually future iterations will have the lecture notes be better formatted and more like a short book.
+These notes were originally a series of blog posts I posted on, so they still read that way at the moment. Eventually future iterations will have the lecture notes be better formatted and more like a short book. 
 * What is computation?
 (So I've decided to post my /rough/ lecture notes for the class I'm teaching next term to this blog before I actually give the lectures. I may go back and edit them after the fact once they're done, but that's an issue of time I won't commit myself to at the present.)
 
@@ -97,7 +97,7 @@ Meta-Commentary: So I've taken off the numbers from these posts because as I'm g
 
      Given where we ended last time, we wanted something like a DFA but where an informal description such as "try $M$ or $N$ and if one of them works, accept" might make sense as an implementation of the union for regular languages. Now, what we really want here is the ability to make a /non-deterministic/ choice of which branch we take: $M$ or $N$. We can think of a non-deterministic choice as essentially meaning that we are trying all possible moves simultaneously, and if one of them leads to an accept state then the entire process accepts.
 
-#+begin_src dot :file union1.png :cmdline -Kdot -Tpng
+#+begin_src dot :file union1.png :cmdline -Kdot -Tpng :exports results
 digraph finite_state_machine {
 	rankdir=LR;
 	size="8,5"
@@ -111,7 +111,7 @@ digraph finite_state_machine {
 
    More formally, we can say that an NFA is a tuple the same as a DFA except that the type of the transition function $\delta$ is different. Instead of $\delta : Q \times \Sigma \to Q$ we have $\delta : Q \times \Sigma_{\epsilon} \to P(Q)$ where $P$ is the powerset operator and for any set $A$ then $A_{\epsilon}$ is the set $A \cup \{\epsilon\}$ where $\epsilon$ is the symbol that corresponds to consuming no input. Now there's a few things we can note here. First, that because the /empty set is an element of the powerset/ that we're allowed to have "empty" transitions such as $\delta(q,a) = \varnothing$ which means that in the state $q$ the NFA transitions to /no/ states on the character $a$. This is in sharp contrast to DFAs where there needed to be exactly one transition defined per letter of the alphabet. This allows to, for example, define the NFA for the language that only contains the empty string with only a single state rather than two as follows:
 
-   #+begin_src dot :file empty.png :cmdline -Kdot -Tpng
+   #+begin_src dot :file empty.png :cmdline -Kdot -Tpng :exports results
     graph {
       	rankdir=LR;
 	size="8,5"
@@ -136,7 +136,7 @@ or in words, that $\epsilon$ is the /unit/ of concatenation of characters. Then 
 
    All this being well defined, we can perform the union in a very simple way: 
       
-   #+begin_src dot :file union2.png :cmdline -Kdot -Tpng
+   #+begin_src dot :file union2.png :cmdline -Kdot -Tpng :exports results
 digraph finite_state_machine {
 	rankdir=LR;
 	size="8,5"
@@ -181,9 +181,6 @@ or in words $\delta^N$ has no $\epsilon$ transitions and on a non-epsilon input,
      For this lecture, we'll elide proving that this construction is correct but hopefully it is clear that this follows the prior description of how we'll simulate non-determinism with a DFA. 
 
      Here I think I'll end things until my next post.
-#+union1.png http://inconsistentuniverse.files.wordpress.com/2014/03/wpid-union18.png
-#+empty.png http://inconsistentuniverse.files.wordpress.com/2014/03/wpid-empty1.png
-#+union2.png http://inconsistentuniverse.files.wordpress.com/2014/03/wpid-union21.png
 * Regular Operations, Regular Expressions, and RegExp/NFA equivalence
     Continuing from last time, we've shown that NFAs and DFAs are equivalent. We're now well prepared to discuss what operations /other/ than union and intersection that the regular languages are closed under. Having two different ways of representing the regular languages means that we can choose to present our constructions in terms of DFAs /or/ NFAs, depending on which is easier. 
 
@@ -195,7 +192,7 @@ or in words $\delta^N$ has no $\epsilon$ transitions and on a non-epsilon input,
 
    Now, to prove that the regular languages are closed under concatenation we will assume that we have two regular languages $L_1$ and $L_2$ and that we have NFAs $M$ which decides $L_1$ and $N$ which decides $L_2$. We'll describe in words how we take these two NFAs and make a new NFA that decides the concatenation. First, we take every accept state of $M$ and draw an $\epsilon$ transition from it to the start state of $N$. Then we take the old accept states of $M$ and demote them to regular states. That's it! Pictorially, we can see it as being something like if $M$ is
 
-     #+begin_src dot :file concat1.png :cmdline -Kdot -Tpng
+     #+begin_src dot :file concat1.png :cmdline -Kdot -Tpng :exports results
        digraph M {
 	rankdir=LR;
 	size="8,5"
@@ -207,10 +204,10 @@ or in words $\delta^N$ has no $\epsilon$ transitions and on a non-epsilon input,
         M2 -> M4;
         M2 -> M5;
       }      
-#+end_src
+     #+end_src
    and $N$ is something like
 
-     #+begin_src dot :file concat2.png :cmdline -Kdot -Tpng
+     #+begin_src dot :file concat2.png :cmdline -Kdot -Tpng :exports results
        digraph N {
 	rankdir=LR;
 	size="8,5"
@@ -218,11 +215,11 @@ or in words $\delta^N$ has no $\epsilon$ transitions and on a non-epsilon input,
 	node [shape = circle];
 	N0 -> N1;
       }      
-#+end_src
+     #+end_src
  
 then after step one the concatenation looks like
 
-     #+begin_src dot :file concat3.png :cmdline -Kdot -Tpng
+     #+begin_src dot :file concat3.png :cmdline -Kdot -Tpng :exports results
        digraph M {
 	rankdir=LR;
 	size="8,5"
@@ -238,9 +235,10 @@ then after step one the concatenation looks like
         M4 -> N0 [label = "epsilon"];
         M5 -> N0 [label = "epsilon"];
       }      
-#+end_src
+     #+end_src
+
   and after step two will look like 
-     #+begin_src dot :file concat4.png :cmdline -Kdot -Tpng
+     #+begin_src dot :file concat4.png :cmdline -Kdot -Tpng :exports results
        digraph M {
 	rankdir=LR;
 	size="8,5"
@@ -256,7 +254,7 @@ then after step one the concatenation looks like
         M4 -> N0 [label = "epsilon"];
         M5 -> N0 [label = "epsilon"];
       }      
-#+end_src
+     #+end_src
 
 The next construction we'll look at is complement. Complement is probably what it sounds like, if you have a language $L$ then the complement $\bar{L} = \{ w | w \notin L\}$. Now, this might make you uncomfortable a touch. After all, I don't find it inherently obvious that just because you can computably tell if a string is /in/ a language that you can computably tell if it's /not/ in the language. In the case of regular languages, it's actually pretty easy as we can show using DFAs. If we have a regular language $L$ and a DFA that decides it $M$, then we can construct a new DFA that decides the complement just by taking the complement of the set of accept states and leaving everything else the same. In other words, if a state was an accept state in $M$ then it's not an accept state in $\bar{M}$ and visa-versa. We can see somewhat intuitively that this is the complement: if a string would end in an accept state of $M$, then it won't be in an accept state of $M'$ and if it would /not/ end in an accept state of $M$ then it /will/ end in an accept state of $M'$. The NFA case is less simple, but the nice thing about knowing that NFAs and DFAs describe /the exact same languages/ is that we can use whichever representation is the simplest for our purposes.
 
@@ -302,15 +300,12 @@ So, now for the hard direction which is converting NFAs to RegExps. The way we'l
   + Every other state has one transition to every other non-start/non-accept state including itself
 
     Wow, those conditions might feel kinda weird, but they're meant to make the construction as easy as possible. So the way our construction works is that we can take NFAs to DFAs with the powerset construction we've seen earlier, then we can turn DFAs into GNFAs, and ultimately turn GNFAs into RegExps in a principled way.
-#+concat1.png http://inconsistentuniverse.files.wordpress.com/2014/03/wpid-concat1.png
-#+concat2.png http://inconsistentuniverse.files.wordpress.com/2014/03/wpid-concat2.png
-#+concat3.png http://inconsistentuniverse.files.wordpress.com/2014/03/wpid-concat3.png
-#+concat4.png http://inconsistentuniverse.files.wordpress.com/2014/03/wpid-concat4.png
+
 * Finishing NFAs to Regexps, Pumping Lemma and Proving Languages Non-Regular
     Continuing from where we left off last time, with the definition of GNFAs, we needed to show that we can take a GNFA with our peculiar restrictions and turn it into a RegExp. Again, we follow Sipser extremely closely. In part, because all of this is tedious enough I didn't feel like trying to be original in my presentation. We start off by taking our DFA $M$ and turning it into a GNFA $N$ as follows: 
     
     + Add a new start state with an $\epsilon$ transition from it to the old start state
-    + Add a new accept state with an $\epislon$ transition /to/ it /from/ each of the old accept states
+    + Add a new accept state with an $\epsilon$ transition /to/ it /from/ each of the old accept states
     + Where there are multiple transitions between states of the DFA, we combine them using $\cup$ into a regular expression that matches the "or" of the individual transitions.
     + Whenever there are no transitions where the requirements of our GNFA force there to be one, add a transition for $\emptyset$
 
@@ -319,7 +314,7 @@ Alright, from here hopefully it's obvious that $M$ and $N$ recognize the same la
     We describe the iterative process as follows: 
    
     + if there are only two states, then we return the RegExp that labels the solitary transition in the graph
-    + if there are more than two states, we arbitrarily choose one of them that isn't the accept or start state and "rip" it out. We'll call this state, again following Sipser, $q_{rip}$. Now, we "repair" the GNFA by, for all states $q_i$ and $q_j$ which are not the accept or start states respectively, we make the new transition from $q_i$ to $q_j$ be $(R_1 R_2^* R_3) \cup R_4$ where $R_1 = \delta(q_i,_q_{rip})$, $R_2 = \delta(q_{rip},q_{rip})$, $R_3 = \delta(q_{rip},q_j)$, and $R_4$ is the original transition between $q_i$ and $q_j$. So what does this mean in words? It means that we are taking into account that there are two ways, now, that we can use to get from $q_i$ to $q_j$: the original path or the path that went through $q_{rip}$. 
+    + if there are more than two states, we arbitrarily choose one of them that isn't the accept or start state and "rip" it out. We'll call this state, again following Sipser, $q_{rip}$. Now, we "repair" the GNFA by, for all states $q_i$ and $q_j$ which are not the accept or start states respectively, we make the new transition from $q_i$ to $q_j$ be $(R_1 R_2^* R_3) \cup R_4$ where $R_1 = \delta(q_i,q_{rip})$, $R_2 = \delta(q_{rip},q_{rip})$, $R_3 = \delta(q_{rip},q_j)$, and $R_4$ is the original transition between $q_i$ and $q_j$. So what does this mean in words? It means that we are taking into account that there are two ways, now, that we can use to get from $q_i$ to $q_j$: the original path or the path that went through $q_{rip}$. 
 
       Since our process removes a state every time, we know that this recursion is well-founded and that we'll eventually terminate. Each step in the algorithm keeps the same meaning in terms of how the regular expression can expand, so the final regular expression returned will correspond to the original NFA.
 
@@ -476,7 +471,7 @@ We say that a PDA $M$ accepts a string $w$ when $w = w\_0 \ldots w_n$ where $w_i
 
 Now that we've done all of that we can go ahead and start working out examples of PDAs and show that, indeed, they can handle the kinds of CFLs we're wanting to do. We'll label the transitions with somethig slightly more complicated than before and all our labels will be of the form "(a,b) -> c$ where "a" is going to be the character we read from input, "b" is the character we pop off the stack, and "c" is the character we're pushing onto the stack. And the reason why those are formatted in ugly ascii rather than latex code is that I'm still not sure how to get latex excepted by the tool I'm using to make the inline graphs. In any case, let's consider what the PDA looks like for the language $\{0^n1^n | n \geq 0\}$, our old friend. The basic idea is that we're going to use the stack to track how many 0s we see before we start accepting 1s, pushing a 0 onto the stack per 0 we see in the input stream. We then pop off a 0 for each 1 we see, and then we make sure that the whole stack is empty before accepting at the end of input. Wait, shoot, how do we see if the stack is empty? We do that by pushing a special "start symbol" onto the stack during our first transition, and then by having the transition to the accept state only happen by popping the start symbol back off the stack. Also, a last notational thing is that we'll use e for $\epsilon$. Without further ado,
 
-     #+begin_src dot :file matching.png :cmdline -Kdot -Tpng
+     #+begin_src dot :file matching.png :cmdline -Kdot -Tpng :exports results
        digraph M {
 	rankdir=LR;
 	size="8,5"
@@ -505,7 +500,7 @@ Well what we want here is to use the memory of the PDA to keep track of all the 
 
 because they'll mean that when we make the switch from "first half" to "second half" then we'll need to use an $\epsilon$ /or/ 1 /or/ 0. Let's just see what this looks like
 
-     #+begin_src dot :file palindrome.png :cmdline -Kdot -Tpng
+     #+begin_src dot :file palindrome.png :cmdline -Kdot -Tpng :exports results
        digraph M {
 	rankdir=LR;
 	size="8,5"
@@ -539,8 +534,6 @@ Neat, huh?
 
 We'll leave this lecture here and pick up next post with a sketch of the equivalence of PDAs and CFGs and a bit on the context free pumping lemma
 
-#+matching.png http://inconsistentuniverse.files.wordpress.com/2014/04/wpid-matching.png
-#+palindrome.png http://inconsistentuniverse.files.wordpress.com/2014/04/wpid-palindrome.png
 * Equivalence of PDAs and CFGs, CFL pumping lemma
     :PROPERTIES:
     :ID:       o2b:92c22dad-20b5-417d-816d-76db9e64c6d7
@@ -558,7 +551,7 @@ We'll leave this lecture here and pick up next post with a sketch of the equival
     + $A \to \epsilon$
 
 We'll allow ourselves a little bit of a cheat at first, and push /multiple/ symbols at a time, and then we'll backtrack and show what it looks like if you take the cheat back out again. Consider it notational shorthand for the real graph!
-     #+begin_src dot :file matchingPrime.png :cmdline -Kdot -Tpng
+     #+begin_src dot :file matchingPrime.png :cmdline -Kdot -Tpng :exports results
        digraph M {
 	rankdir=LR;
 	size="8,5"
@@ -589,7 +582,7 @@ You can see how we pushed multiple symbols at once and had a transition for "A" 
 
 Since what we're doing is a straightfoward simulation of the the CFG on the stack of the PDA, hopefully it's pretty clear that this will decide the same language as the CFG did. For completion, let's include here what the PDA looks like without our cheat for pushing multiple symbols
 
-     #+begin_src dot :file matchingPrime2.png :cmdline -Kdot -Tpng
+     #+begin_src dot :file matchingPrime2.png :cmdline -Kdot -Tpng :exports results
        digraph M {
 	rankdir=LR;
 	size="8,5"
@@ -648,8 +641,6 @@ Assume our pumping length is $p$, then we pick our string to be $0^p1^{2p}0^p$. 
 and thus we've shown that the language is /not/ context free.
 
 Well, that pretty much wraps it up for everything we're intending to cover about context free languages in this course. There's plenty more to say, really, but it's mostly in the context of parsing or how linguists use them which is all pretty wide outside the scope of this course where we just want to treat them as an intermmediate model of computation. Onward to Turing machines! (which are chronologically before these notes, but wevs)
-#+matchingPrime.png http://inconsistentuniverse.files.wordpress.com/2014/04/wpid-matchingprime1.png
-#+matchingPrime2.png http://inconsistentuniverse.files.wordpress.com/2014/04/wpid-matchingprime2.png
 * Informal Introduction to Turing Machines	
 (This lecture is going to appear out of order, unfortunately, but I was incredibly bored of PDAs and I really wanted to still get a post and some writing done to hit my word count goals. I'm serious, y'all, if you think pushdown automata and constructions on them are kinda boring as students just imagine trying to get up your enthusiasm about lecturing on it!)
 
@@ -732,7 +723,7 @@ Indeed, there are actually languages such as Coq or Agda that /don't/ allow for 
 
 and the state diagram is 
 
-     #+begin_src dot :file zeropowers.png :cmdline -Kdot -Tpng
+     #+begin_src dot :file zeropowers.png :cmdline -Kdot -Tpng :exports results
        digraph M {
 	rankdir=LR;
 	size="8,5"
@@ -782,7 +773,6 @@ The other, similar, variant of the Turing machine is the non-deterministic Turin
 
 I think that'll be all for this post, and next time we'll actually get to talking about what kinds of languages are decideable, what ones are recognizable, etc.
 
-#+zeropowers.png http://inconsistentuniverse.files.wordpress.com/2014/04/wpid-zeropowers.png
 * Machines Simulating Machines, Some Decideability
     Last time we mentioned casually the idea that Turing machines could simulate other Turing machines. This isn't covered much in Sipser, at least not in a way I liked, so let's talk a bit informally about how such a thing makes sense. First off, let's note that a Turing machine itself can be given some textual, finite, description as a string. Thought it might seem silly, remember 
 
@@ -819,7 +809,7 @@ Now, for NFAs we can do a similar thing with $A_{NFA} = \{(B,w) | B \text{ is an
 Also similarly, we can do the same thing for regular expressions and reuse our machine that decides $A_{NFA}$ by first converting the regular expression into an NFA. This way, $A_{REX} = \{(R,w) | R \text{ is a regular expression that generates } w\}$ is also decideable. 
 
 We can keep following Sipser pretty closely and talk about other languages related to regular languages that are decideable, but for the moment let's stop here and we'll do more on recognizable languages next time.
-#+zeropowersagain.png http://inconsistentuniverse.files.wordpress.com/2014/04/wpid-zeropowersagain1.png
+
 * More Decidability and Recognizability
     Continuing from last time, we want to talk more about what kinds of things are decidable and recognizable. We argued semi-formally last time that 
 
@@ -946,9 +936,9 @@ Of course, it depends on what we mean by "feasible". Does "feasible" mean "finis
 
 Now there are two different measures we could be using for scalability: time and space. We're really only going to discuss time, not because space usage isn't also important but in a sense time usage is the more important one. We're getting better every year at having more memory with which to work on our computers, but we haven't yet figured out how to cram more seconds into a day. We can use swap space and give ourselves massive amounts of memory (to a point, before we just slow ourselves down to a crawl) but better and better processors don't buy you much when your algorithms scale poorly. Of course, what do we mean by scale poorly? To answer that question, we'll introduce the notion of time complexity and "big O" notation that you're probably familiar with but we should review anyway.
 
-The "time" that a Turing machine takes on an input is the number of steps it runs on that input before it terminates. Again, we're dealing only with decidable languages so that it will *always* terminate in finite time. We're just trying to describe how finite is finite.  We say that a Turing machine $M$ 's running time is described by a function $f : \textbb{N} \to \textbb{N}$ if the maximum number of steps that M takes on an input of length $n$ is $f(n)$. In other words, for every length $n$, $f(n)$ gives us the maximum number of steps that the machine takes for an input of that length. Now, ultimately, if we're talking about scalability we don't really care about constant factors so we want to treate $f(n) = 2*n$ and $f(n) = 3*n$ the same, as well as $f(n) = n + 10$. This might seem silly because maybe you would care about a constant difference of 10 or 100, maybe that feels like it should change a problem from feasible to unfeasible but look at it this way: we're trying to distinguish problems that are in principle computable in a reasonable time as the input grows, and a factor of 10 or even 100 could be overcome at some point by improved hardware, from problems whose number of steps grows exponentially from small to longer-than-the-lifetime-of-the-universe just by making the input 10 times longer.
+The "time" that a Turing machine takes on an input is the number of steps it runs on that input before it terminates. Again, we're dealing only with decidable languages so that it will *always* terminate in finite time. We're just trying to describe how finite is finite.  We say that a Turing machine $M$ 's running time is described by a function $f : \mathbb{N} \to \mathbb{N}$ if the maximum number of steps that M takes on an input of length $n$ is $f(n)$. In other words, for every length $n$, $f(n)$ gives us the maximum number of steps that the machine takes for an input of that length. Now, ultimately, if we're talking about scalability we don't really care about constant factors so we want to treate $f(n) = 2*n$ and $f(n) = 3*n$ the same, as well as $f(n) = n + 10$. This might seem silly because maybe you would care about a constant difference of 10 or 100, maybe that feels like it should change a problem from feasible to unfeasible but look at it this way: we're trying to distinguish problems that are in principle computable in a reasonable time as the input grows, and a factor of 10 or even 100 could be overcome at some point by improved hardware, from problems whose number of steps grows exponentially from small to longer-than-the-lifetime-of-the-universe just by making the input 10 times longer.
 
-To the end of making this distinction, we define that for $f : \textbb{N} \to \textbb{N}$ and $g : \textbb{N} \to \textbb{R}^+$ that $f(n) = O(g(n))$ when there exists positive integers $c$ and $n_0$ such that $f(n) \le c*g(n)$ for all $n > n_0$. In other words, $f(n)$ is, for sufficiently large $n$ always bounded by $g(n)$ up to some constant factor. 
+To the end of making this distinction, we define that for $f : \mathbb{N} \to \mathbb{N}$ and $g : \mathbb{N} \to \mathbb{R}^+$ that $f(n) = O(g(n))$ when there exists positive integers $c$ and $n_0$ such that $f(n) \le c*g(n)$ for all $n > n_0$. In other words, $f(n)$ is, for sufficiently large $n$ always bounded by $g(n)$ up to some constant factor. 
 
 This means that we can finally describe the time complexity class of a function $t$, $\text{TIME}(t(n))$, to be all languages that can be decided by a Turing machine that runs in $O(t(n))$ time. Note that this is cumulative in the sense that if a TM runs in $O(t(n))$ time and $t(n) < t'(n)$ for all $n$, then we have that the TM runs in $O(t'(n))$ time as well. This little detail might be important to those of you paying close attention to how we define the complexity classes $P$ and $NP$ shortly.
 
