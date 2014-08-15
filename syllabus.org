@@ -1,0 +1,136 @@
+* Lecture 1: 9/30
+  + Admin: 
+    + Introduction to course
+    + Goals of the course
+    + Grading policy
+    + Homeworks (plural) assigned
+  + Topics:
+    + Administrative Issues
+    + What is computation?
+    + Informal definition of computable function
+    + Informal introduction to DFAs
+    + Formal definition of DFAs + examples
+* Lecture 2: 10/2
+  + Topics: 
+    + More DFA examples
+    + Informal introduction to NFAs
+    + Formal definition of NFAs
+    + Examples of NFAs
+    + Definition of regular languages
+* Lecture 3: 10/7
+  + Topics:
+    + Equivalence between of NFAs and DFAs
+    + Introduction to RegExps
+    + Examples of RegExps
+    + Matching regexp as inductive predicate
+    + Sketch of equivalence between RegExps/NFAs
+* lecture 4: 10/9
+  + Topics: 
+    + Introducing examples of non-regular languages
+    + Definition of the pumping lemma
+    + Examples of using the pumping lemma
+* Lecture 5: 10/14
+  + Topics:
+    + Introduction to Context-Free Languages
+    + Introduction to context-free grammars
+    + Formal definition of context-free grammars
+    + Chomsky Normal Form
+    + Examples of CFGs
+  + Admin: 
+    + HW 1 due
+    + HW 1 solutions distributed
+* Lecture 6: 10/16
+  + Topics: 
+    + PDAs
+    + Examples of PDAs
+    + CFG to PDA conversion
+    + CFL Pumping Lemma
+* Lecture 7: 10/21
+  + Topics: 
+    + More CFL pumping lemma
+    + Introduction to Turing machines
+    + Discussion of informal descriptions vs. state machines
+    + First Examples of Turing machines
+    + Deciders vs. Recognizers
+* Lecture 8: 10/23
+  + Topics:
+    + Examples of state machine descriptions for Turing machines
+    + Non-deterministic Turing machines/non-deterministic choice
+    + More examples of informal descriptions
+      + What is allowed in an informal description?
+      + Machines simulating other machines
+    + Examples of languages that are decidable
+    + Examples of decidable use of non-deterministic choice
+  + Admin:
+    + HW 2 due
+* Lecture 9: 10/28
+  + Topics:
+    + Proving that there exists a recognizable, but not decidable language
+      + Russell's Paradox
+      + Halting problem
+    + Other examples of recognizable languages
+    + Languages that are neither recognizable nor decidable
+      + \overline{A_{TM}}
+      + Proof that a recognizable, but not decidable language, has an unrecognizable complement
+* Lecture 10: 10/30
+  + Topics: 
+    + Computable functions
+    + Computable functions as algorithms
+    + Computable reductions
+    + Examples of computable reductions
+    + Properties of computable reductions
+* Lecture 11: 11/4
+  + Topics:
+    + More examples of computable reductions
+    + Proving a language decidable with computable reductions
+    + Proving a language recognizable with computable reductions
+    + Proving a language undecidable
+    + Proving a language unrecognizable
+  + Admin:
+    + HW 3 due
+* Lecture 12: 11/6
+  + Topics:
+    + Even more computable reductions
+    + Intro to time complexity
+    + Counting time complexity for Turing machines
+    + O-notation
+    + Complexity class of P
+    + Examples of problems in P
+* Lecture 13: 11/13 (11/11 is Veteran's Day)
+  + Topics: 
+    + NP complexity class
+    + Examples of problems in NP
+    + Polynomial-time reductions
+    + NP-hard
+    + NP-complete
+    + Proving a language is NP-complete
+* Lecture 14: 11/18
+  + Topics:
+    + Untyped lambda calculus
+    + Church encodings
+    + Y-combinator
+    + Programming with lambda calculus
+  + Admin:
+    + HW 4 due
+* Lecture 15: 11/20
+  + Topics:
+    + Typed lambda calculus
+    + Connections of typed lambda calculus to logic
+    + Proofs-as-programs
+    + Consistency of the logic
+    + Statement of strong-normalization
+* Lecture 16: 11/25
+  + Topics:
+    + Probably overflow lecture time for when we slow down
+    + Otherwise special topics in computability
+* Lecture 17: 12/2 (Thanksgiving is 11/27)
+  + Topics:
+   + Probably overflow lecture time for when we slow down
+   + Otherwise special topics in computability
+* Lecture 18: 12/4
+  + Topics:
+    + Review of course
+  + Admin: 
+    + HW 5 due
+    + Take-home final passed out /in class/
+* Take-home final due: 12/9 at midnight PST
