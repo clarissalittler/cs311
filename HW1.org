@@ -12,3 +12,10 @@
    Give NFAs for the following languages 
    + $\{ w | w \text{ uses all but one of } \{a,b,c,d\} \}$
    + $\{ w | w \text{ ends with a zero} \}$ but you must use only two states
+** Problem 5
+   (from 1.38 in Sipser) An all-NFA M is a 5-tuple (Q, \Sigma, \delta, q_0, F) that is like an NFA accept that the acceptance condition is that /every/ possible state the NFA can be in at the end of processing the string must be an accept state. Prove that all-NFAs are equivalent in power to NFAs. Hint: what does the acceptance condition mean in terms of \exists and \forall and if there are /no/ possible states you can be in?
+** Problem 6
+   Prove /using the pumping lemma/ that the following languages aren't regular. Remember, your proof needs to be a proof by contradiction in the form we did in class. 
+
+  + { 0^n 1^m | m > n}
+  + { s | s has an even number of 0s and fewer 1s than pairs of 0s
