@@ -8,6 +8,8 @@ The semantics of the $RESET$ move is that the Turing machine will go all the bac
 
    + show that you can turn a Turing machine with left reset into an ordinary Turing machine (the easy part)
    + show that you can turn an ordinary Turing machine into a Turing machine with left reset (the hard part)
+
+The easiest way to do this is to simulate one type of movement with the other.
 ** Problem 2   
 Show that the Turing-decidable languages are closed under
 
@@ -20,7 +22,7 @@ Show that the Turing-decidable languages are closed under
    
    + $\{ w | w \text{ contains twice as many 0s as 1s} \}$
    + $\{ w | w \text{ has matching parentheses and a length that's a power of 2}\}$
-
+     
 ** Problem 4
 Show that the Turing /recognizable/ languages are closed under
 
@@ -29,3 +31,6 @@ Show that the Turing /recognizable/ languages are closed under
   + reversal
 
 Are the /recognizable/ languages closed under complement? Can you give a counter-example?
+
+** Problem 5
+   (from Sipser) Show that every infinite recognizable language has an /infinite/ decidable subset. 

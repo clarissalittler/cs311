@@ -1,0 +1,13 @@
+* HW 5: Lambda Calculi and Time Complexity
+** Problem 1
+   Consider a binary tree that is either
+   + a leaf
+   + or a node with two other binary trees as its descendants
+  You should 
+   1. give this datatype a church encoding in the untyped lambda calculus
+   2. write a function that counts the number of nodes in a tree (for this purpose just assume that numbers exist as a datatype)
+** Problem 2
+   (from Sipser) Let Double-SAT be the language { \phi | \phi has at least two satisfying assignments }. Show, by polynomial time reduction, that Double-SAT is NP-complete.
+** Problem 3
+   
+** Problem 4

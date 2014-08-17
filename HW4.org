@@ -6,5 +6,5 @@
 ** Problem 3
    If $A \le_m B$ and $B$ is a regular language, is $A$ necessarily a regular language? Justify your answer.
 ** Problem 4
-   Let $B$ be a decidable language with $B \neq \emptyset$ and $B \neq \Sigma^8$, then if $A$ is decidable define a computational reduction $A \le_m B$.
+   Let $B$ be a decidable language with $B \neq \emptyset$ and $B \neq \Sigma^*$, then if $A$ is decidable define a computational reduction $A \le_m B$.
  
