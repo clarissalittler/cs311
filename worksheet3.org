@@ -1,0 +1,10 @@
+#+TITLE: In-Class Worksheet 3: Equivalence of NFAs and DFAs
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc: nil
+
+* NFAs
+  Write NFAs for the following languages and then convert them into DFAs
+  + {w | w has at least two 1s }
+  + {w | w is an even # of 0s or an odd # of 1s} (one /or/ the other)
+
+

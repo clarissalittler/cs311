@@ -1,0 +1,12 @@
+#+TITLE: In-Class Worksheet: NFAs and Basic Constructions
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+
+* NFAs
+  Try to write NFAs for the following languages
+  + { w | w has at least three 1s }
+  + { w | w is matched by the regular expression 10^*(1|0)^*}
+* Unions and Intersections
+  Write both the union and intersection of the languages as both DFAs and NFAs
+  + {w | w starts with 3 0s}
+  + {w | w ends with 3 1s}

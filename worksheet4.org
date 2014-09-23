@@ -1,0 +1,10 @@
+#+TITLE: In-Class Worksheet 4: Regular Expressions
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc: nil
+
+* RegExps
+  Write regular expressions for the following languages (you're allowed to use $\Sigma^*$ as a shorthand)
+  + { w | w has at least three 1s}
+  + { w | w has length at least 3 and less than 5}
+* Conversion of Regular Expressions to NFAs
+  Convert the previous regular expressions to NFAs, convince yourself that they really /are/ the same

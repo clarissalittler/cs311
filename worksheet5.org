@@ -1,0 +1,6 @@
+#+TITLE: In-Class Worksheet 5: Fun with The Pumping Lemma
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc: nil
+
+* Pumping Lemma
+Try to prove that {w | w has an twice as many 1s as 0s} is /not/ regular using the pumping lemm

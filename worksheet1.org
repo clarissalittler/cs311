@@ -1,0 +1,14 @@
+#+TITLE: In-Class Worksheet 1: DFAs and Simple Proofs
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+
+* DFAs
+Try to write down DFAs for the following languages
+   + { w | w starts with 3 0s or 3 1s}
+   + { w | w is matched by the regular expression 10^*(1|0)} (this is a preview of a connection we'll be making formally later!)
+* An Inductive Proof
+Prove, by induction over natural numbers, that every number is either even or odd. This should be a very simple proof, but the goal is to get used to the idea of natural induction.
+* A Proof by Contradiction
+  Prove, by contradiction, that the negative of an irrational number is irrational
+
+  [[http://www.personal.kent.edu/~rmuhamma/Philosophy/Logic/ProofTheory/proof_by_contradictionExamples.htm][source for this one]]
