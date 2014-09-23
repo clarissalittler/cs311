@@ -1,3 +1,7 @@
+#+BEGIN_LaTeX
+\usepackage{proof}
+#+END_LaTeX
+
 #+TITLE: Lecture Notes on Theory of Computation
 #+OPTIONS: toc:nil
 
@@ -294,6 +298,45 @@ So, now for the hard direction which is converting NFAs to RegExps. The way we'l
   + Every other state has one transition to every other non-start/non-accept state including itself
 
     Wow, those conditions might feel kinda weird, but they're meant to make the construction as easy as possible. So the way our construction works is that we can take NFAs to DFAs with the powerset construction we've seen earlier, then we can turn DFAs into GNFAs, and ultimately turn GNFAs into RegExps in a principled way.
+
+* Regular Expressions: A Digression on Formal Systems
+  So when discussing regular expressions, we talk a lot about "a string maches a regexp" and we've been cheating a bit by treating it as an informal intuitive concept that relies on the fact that /you already know/ what a regular expression does. 
+
+  Here's what I think is a good way to look at: as a formal system of inference rules.
+
+  You'll find an actual implementation of this in the file [[https://github.com/clarissalittler/cs311/blob/master/agda/RegExp2.agda][RegExp2.agda]] in our repo. 
+
+  First, we take the normal inductive consideration of what a regular expression is. Specifically, a regexp is a syntactic object built from the following grammar 
+
+  \begin{align*}
+    R &:= c (\text{c is a character in the alphabet}) \\
+      &| R \circ R \\
+      &| R \cup R \\
+      &| R^* \\
+      &| \epsilon \\
+      &| \varnothing \\
+  \end{align*}
+
+Now, remembering that a string is a sequence of characters let's define the following /inference rules/ which constitute the definition of the relation $w ? R$, which means that the string $w$ matches the regular expression $R$.
+
+| Rule Name    | Inference Rule                                           |
+| match-char   | $\infer{c ? c}{}$                                        |
+| match-concat | $\infer{w_1 2_2 ? R_1 \circ R_2}{w_1 ? R_1 & w_2 ? R_2}$ |
+| match-alt-l  | $\infer{w ? R_1 \cup R_2}{w ? R_1}$                      |
+| match-alt-r  | $\infer{w ? R_1 \cup R_2}{w ? R_2}$                      |
+| match-star-1 | $\infer{\epsilon ? R^*}{}$                               |
+| match-star-2 | $\infer{w_1 w_2 ? R^*}{w_1 ? R & w_2 ? R^*}$             |
+| match-empty  | $\infer{\epsilon ? \epsilon}{}$                          |
+
+Now if we look at these rules we can see a few interesting things
+
+  + There's no rule for $\varnothing$, because it doesn't match anything!
+  + the empty string or a single character match themselves
+  + you can match an alternation by matching /either/ of the two regular expressions
+  + you match a concatenation by splitting the string into two pieces, each of which match
+  + you match the star with either the empty string /or/ through the recursive match
+
+We can glue these rules together to actually derive that a string is matched by a regular expression.
 
 * Finishing NFAs to Regexps, Pumping Lemma and Proving Languages Non-Regular
     Continuing from where we left off last time, with the definition of GNFAs, we needed to show that we can take a GNFA with our peculiar restrictions and turn it into a RegExp. Again, we follow Sipser extremely closely. In part, because all of this is tedious enough I didn't feel like trying to be original in my presentation. We start off by taking our DFA $M$ and turning it into a GNFA $N$ as follows: 

@@ -115,10 +115,11 @@
 * Lecture 15: 11/20
   + Topics:
     + Typed lambda calculus
+    + Statement of strong-normalization
+    + Argument that not every untyped term is typeable
     + Connections of typed lambda calculus to logic
     + Proofs-as-programs
     + Consistency of the logic
-    + Statement of strong-normalization
 * Lecture 16: 11/25
   + Topics:
     + Probably overflow lecture time for when we slow down
