@@ -1,0 +1,7 @@
+#+TITLE: In-Class Worksheet 8: Equivalence of CFGs and PDAs
+#+AUTHOR: Clarissa Littler
+
+For this exercise try the following:
+
++ Write down any three CFGs you want
++ Convert them, using the procedure in class, to PDAs

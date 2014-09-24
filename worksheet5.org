@@ -2,5 +2,6 @@
 #+AUTHOR: Clarissa Littler
 #+OPTIONS: toc: nil
 
-* Pumping Lemma
-Try to prove that {w | w has an twice as many 1s as 0s} is /not/ regular using the pumping lemm
+
+Try to prove that {w | w has an twice as many 1s as 0s} is /not/ regular using the pumping lemma. Then write down a couple of languages and either define a DFA, NFA, or RegExp for them *or* prove they're not regular.
+
