@@ -1,0 +1,5 @@
+#+TITLE: In-Class Worksheet 10: Computable Functions and Reductions
+#+AUTHOR: Clarissa Littler
+
+* Computable Functions
+* Computable Reductions

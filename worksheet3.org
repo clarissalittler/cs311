@@ -6,5 +6,8 @@
   Write NFAs for the following languages and then convert them into DFAs
   + {w | w has at least two 1s }
   + {w | w is an even # of 0s or an odd # of 1s} (one /or/ the other)
-
+* Constructions
+  + Write down NFAs for a couple of simple regular languages
+  + Try combining the NFAs you defined using some combination of concatenation, union, intersection, and Kleene star
+  + Write down the /language/ corresponding to this combination
 

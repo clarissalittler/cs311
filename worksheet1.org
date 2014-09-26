@@ -2,6 +2,8 @@
 #+AUTHOR: Clarissa Littler
 #+OPTIONS: toc:nil
 
+This is the first of a series of ungraded worksheets that are meant to break up the monotony of *two-hour lectures* and give y'all some more practice. Feel free to work on them together.
+
 * DFAs
 Try to write down DFAs for the following languages
    + { w | w starts with 3 0s or 3 1s}

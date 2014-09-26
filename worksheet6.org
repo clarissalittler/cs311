@@ -5,3 +5,5 @@ Write context free grammars for the following languages
 
 + { w | w ends with 3 1s or starts with 3 0s}
 + { w | w has twice as many 1s as 0s}
+
+Now write pushdown automata for the same languages

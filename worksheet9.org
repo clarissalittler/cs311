@@ -1,0 +1,11 @@
+#+TITLE: In-Class Worksheet 9: More Turing Machines And Paradoxes
+#+AUTHOR: Clarissa Littler
+
+* Informal Descriptions and Non-deterministic Choice
+Write down the /informal/ description of a non-deterministic Turing for the following language: {w | w is not a prime number}.
+
+For the purposes of this question, go ahead and assume that things such as testing multiplication and equality are understood decidable operations that you're allowed to call within your description.
+
+Note that there's more than one right answer here, but in at least a couple of the solutions non-determinism is useful.
+* Paradoxes
+Try to explain the paradox of the halting problem in your own words and share it with each other. (This may sound silly, but this is historically one of the more confusing results in this class.)

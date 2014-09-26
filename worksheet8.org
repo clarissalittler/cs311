@@ -1,7 +1,13 @@
-#+TITLE: In-Class Worksheet 8: Equivalence of CFGs and PDAs
+#+TITLE: In-Class Worksheet 8: The Start of Turing Machines
 #+AUTHOR: Clarissa Littler
 
-For this exercise try the following:
+* Running a Turing Machine
+Practice executing the Turing machine given in the figure on the inputs below, to get a feel for how Turing machines operate.
+(insert figure for Turing machine that scans for 2^n 0s)
++ 000
++ 0000
++ 000000
+* Informal Description Practice
+Write down the /informal/ description for a Turing machine that decides the following language: {S(n)=m | m,n are binary numbers \wedge m = n+1} (where S, (,) and = are just /symbols/ in the alphabet)
 
-+ Write down any three CFGs you want
-+ Convert them, using the procedure in class, to PDAs
+and then test it on a few inputs

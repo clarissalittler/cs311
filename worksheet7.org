@@ -1,7 +1,12 @@
-#+TITLE: In-Class Worksheet 7: Pushdown Automata
+#+TITLE: In-Class Worksheet 7: Equivalence of CFGs and PDAs
 #+AUTHOR: Clarissa Littler
 
-Write pushdown automata for the following languages
+For this exercise try the following:
 
-+ { w | w ends with 3 1s or starts with 3 0s}
-+ { w | w has twice as many 1s as 0s}
++ Write down any three CFGs you want
++ Convert them, using the procedure in class, to PDAs
+
+Prove, using the CFL pumping lemma, that the following language is /not/ context-free
+
++ { 0^n1^{m}2^{2m} | n >= 0 \wedge m > n}
+
