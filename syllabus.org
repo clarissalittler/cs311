@@ -1,5 +1,7 @@
 * Lecture 1: 9/30
-  + Topics: Sipser 2nd ed pgs 31 - 44
+  + Topics: 
+    + Sipser 2nd ed pgs 31 - 44
+    + Sipser 3rd ed - same
     + Administrative Issues
     + What is computation?
     + Informal definition of computable function
@@ -12,7 +14,9 @@
     + Grading policy
     + Homeworks (plural) assigned
 * Lecture 2: 10/2
-  + Topics: Sipser 2nd ed pgs 44 - 62
+  + Topics: 
+    + Sipser 2nd ed pgs 44 - 62
+    + Sipser 3rd ed pgs same
     + More DFA examples
     + Informal introduction to NFAs
     + Formal definition of NFAs
@@ -30,7 +34,9 @@
       + Kleene star
     + Worksheet 3: Equivalence of NFAs and DFAs
 * Lecture 4: 10/9
-  + Topics: Sipser 2nd ed pgs 63 - 76
+  + Topics: 
+    + Sipser 2nd ed pgs 63 - 76
+    + Sipser 3rd ed pgs 63 - 76
     + Introduction to RegExps
     + Examples of RegExps
     + Matching regexp as inductive predicate
@@ -38,7 +44,9 @@
     + Introducing examples of non-regular languages
     + Worksheet 4: Regular Expressions
 * Lecture 5: 10/14
-  + Topics:
+  + Topics: 
+    + Sipser 2nd ed pgs 77 - 82, 99 - 106
+    + Sipser 3rd ed pgs 77 - 82, 101 - 111 
     + Definition of the pumping lemma
     + Examples of using the pumping lemma
     + Introduction to Context-Free Languages
@@ -48,6 +56,8 @@
     + Worksheet 5: Pumping Lemma
 * Lecture 6: 10/16
   + Topics: 
+    + Sipser 2nd ed pgs 107 - 127
+    + Sipser 3rd ed pgs 111 - 129
     + PDAs
     + Chomsky Normal Form
     + Examples of PDAs
@@ -59,6 +69,8 @@
     + HW 1 solutions distributed
 * Lecture 7: 10/21
   + Topics: 
+    + Sipser 2nd ed pgs 137 - 148
+    + Sipser 3rd ed pgs 165 - 175
     + More CFL pumping lemma
     + Introduction to Turing machines
     + Discussion of informal descriptions vs. state machines
@@ -66,7 +78,9 @@
     + Deciders vs. Recognizers
     + Worksheet 7: Equivalence of CFGs and PDAs, CFL Pumping Lemma
 * Lecture 8: 10/23
-  + Topics:
+  + Topics: 
+    + Sipser 2nd ed pgs 149 - 159, 165 - 172
+    + Sipser 3rd ed pgs 176 - 187, 193 - 201
     + Examples of state machine descriptions for Turing machines
     + Non-deterministic Turing machines/non-deterministic choice
     + More examples of informal descriptions
@@ -76,7 +90,9 @@
     + Examples of decidable use of non-deterministic choice
     + Worksheet 8: Turing Machines
 * Lecture 9: 10/28
-  + Topics:
+  + Topics: 
+    + Sipser 2nd ed pgs 173 - 182
+    + Sipser 3rd ed pgs 201 - 210
     + Proving that there exists a recognizable, but not decidable language
       + Russell's Paradox
       + Halting problem
@@ -88,8 +104,10 @@
     + Worksheet 9: Diagonalization and Non-determinism
   + Admin:
     + HW 2 due
-* Lecture 10: 10/30
+* Lecture 10: 10/30 
   + Topics: 
+    + Sipser 2nd ed pgs 206 - 211
+    + Sipser 3rd ed pgs 234 - 238
     + Computable functions
     + Computable functions as algorithms
     + Computable reductions
@@ -97,14 +115,18 @@
     + Properties of computable reductions
     + Worksheet 10: Computable Functions and Reductions
 * Lecture 11: 11/4
-  + Topics:
+  + Topics: 
+    + Sipser 2nd ed pgs 206 - 211
+    + Sipser 3rd ed pgs 234 - 238
     + More examples of computable reductions
     + Proving a language decidable with computable reductions
     + Proving a language recognizable with computable reductions
     + Proving a language undecidable
     + Proving a language unrecognizable
 * Lecture 12: 11/6
-  + Topics:
+  + Topics: 
+    + Sipser 2nd ed pgs 247 - 256
+    + Sipser 3rd ed pgs 275 - 284
     + Even more computable reductions
     + Intro to time complexity
     + Counting time complexity for Turing machines
@@ -115,6 +137,8 @@
     + HW 3 due
 * Lecture 13: 11/13 (11/11 is Veteran's Day)
   + Topics: 
+    + Sipser 2nd ed pgs 256 - 294 (just skim 283 on)
+    + Sipser 3rd ed pgs 284 - 332 (just skim 311 on)
     + NP complexity class
     + Examples of problems in NP
     + Polynomial-time reductions
@@ -150,5 +174,4 @@
     + Review of course
   + Admin: 
     + HW 5 due
-
-
+* Final Exam: 12/9 5:30-7:20pm
