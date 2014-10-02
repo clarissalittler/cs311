@@ -5,8 +5,8 @@
 * NFAs
   Try to write NFAs for the following languages
   + { w | w has at least three 1s }
-  + { w | w is matched by the regular expression 10^*(1|0)^*}
+  + { w | w is matched by the regular expression 10^*(1|0)}
 * Unions and Intersections
-  Write both the union and intersection of the languages as both DFAs and NFAs
+  Write DFAs for the following two languages, then take both the union and intersection. When you're done, do the same thing with them as NFAs and take the union of the NFAs.
   + {w | w starts with 3 0s}
   + {w | w ends with 3 1s}
