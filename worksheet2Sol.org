@@ -1,0 +1,151 @@
+#+TITLE: In-Class Worksheet: NFAs and Basic Constructions
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+
+* NFAs
+  Try to write NFAs for the following languages
+  + { w | w has at least three 1s }
+    #+BEGIN_SRC dot :file WS211.png :cmdline -Kdot -Tpng :exports results
+      digraph N {
+       rankdir = LR;
+       size="2,2";
+       node [shape = doublecircle]; q3;
+       node [shape = circle];
+       q0 -> q0 [label = "0,1"];
+       q1 -> q1 [label = "0,1"];
+       q2 -> q2 [label = "0,1"];
+       q3 -> q3 [label = "0,1"];
+       q0 -> q1 [label = "1"];
+       q1 -> q2 [label = "1"];
+       q2 -> q3 [label = "1"];
+      }
+    #+END_SRC
+  + { w | w is matched by the regular expression 10^*(1|0)}
+    #+BEGIN_SRC dot :file WS212.png :cmdline -Kdot -Tpng :exports results
+      digraph N {
+        rankdir = LR;
+        size="2,2";
+        node [shape = doublecircle]; q2;
+        node [shape = circle];
+        q0 -> q1 = [label = "1"];
+        q1 -> q1 = [label = "0"];
+        q1 -> q2 = [label = "1,0"];
+      }
+    #+END_SRC
+* Unions and Intersections
+  Write DFAs for the following two languages, then take both the union and intersection. When you're done, do the same thing with them as NFAs and take the union of the NFAs.
+  + {w | w starts with 3 0s}
+    DFA: 
+    #+BEGIN_SRC dot :file WS221D.png :cmdline -Kdot -Tpng :exports results
+      digraph N {
+        rankdir = LR;
+        size="2,2";
+        node [shape = doublecircle]; q3;
+        node [shape = circle];
+        q0 -> qe [label = "1"];
+        q1 -> qe [label = "1"];
+        q2 -> qe [label = "1"];
+        q0 -> q1 [label = "0"];
+        q1 -> q2 [label = "0"];
+        q2 -> q3 [label = "0"];
+        q3 -> q3 [label = "0,1"];
+      }
+    #+END_SRC
+
+    NFA: 
+    #+BEGIN_SRC dot :file WS221N.png :cmdline -Kdot -Tpng :exports results
+      digraph N {
+        rankdir = LR;
+        size="2,2";
+        node [shape = doublecircle]; q3;
+        node [shape = circle];
+        q0 -> q1 [label = "0"];
+        q1 -> q2 [label = "0"];
+        q2 -> q3 [label = "0"];
+        q3 -> q3 [label = "0,1"];
+      }
+    #+END_SRC
+  + {w | w ends with 3 1s}
+    DFA:
+    #+BEGIN_SRC dot :file WS222D.png :cmdline -Kdot -Tpng :exports results
+      digraph N {
+        rankdir = LR;
+        size="2,2";
+        node [shape = doublecircle]; q3;
+        node [shape = circle];
+        q0 -> q1 [label = "1"];
+        q1 -> q2 [label = "1"];
+        q2 -> q3 [label = "1"];
+        q0 -> q0 [label = "0"];
+        q1 -> q0 [label = "0"];
+        q2 -> q0 [label = "0"];
+        q3 -> q0 [label = "0"];
+      }
+    #+END_SRC
+    NFA:
+    #+BEGIN_SRC dot :file WS222N.png :cmdline -Kdot -Tpng :exports results
+      digraph N {
+        rankdir = LR;
+        size = "2,2";
+        node [shape = doublecircle]; q3
+        node [shape = circle];
+        q0 -> q1 [label = "1"];
+        q1 -> q2 [label = "1"];
+        q2 -> q3 [label = "1"];
+        q0 -> q0 [label = "0,1"];
+      }
+    #+END_SRC
+
+Now to take the union for /NFAs/ we just do a very simple connection between the two via \epsilon transtions
+
+#+BEGIN_SRC dot :file WS22UN.png :cmdline -Kdot -Tpng :exports results
+  digraph N {
+    rankdir = LR;
+    size="2,2";
+    node [shape = doublecircle]; M3 N3;
+    node [shape = circle];
+    q0 -> M0 [label = "e"];
+    q0 -> N0 [label = "e"];
+    M0 -> M1 [label = "0"];
+    M1 -> M2 [label = "0"];
+    M2 -> M3 [label = "0"];
+    M3 -> M3 [label = "0,1"];
+    N0 -> N1 [label = "1"];
+    N1 -> N2 [label = "1"];
+    N2 -> N3 [label = "1"];
+    N0 -> N0 [label = "0,1"];
+  }
+#+END_SRC
+
+Now the DFA case is /way/ more annoying and has a total of 20 states: we're going to write down a slightly simplified version that consists only of the states that are actually reachable in the system. We're going to label all the states as qxy where x is the state of the DFA for the first language and y is the state of the DFA for the second language
+
+#+BEGIN_SRC dot :file WS22UD.png :cmdline -Kdot -Tpng :exports results
+  digraph N {
+    rankdir = LR;
+    size="4,4";
+    node [shape = doublecircle]; q30 q31 q32 q33 q03 q13 q23 q33 qe3;
+    node [shape = circle];
+    q00 -> qe1 [label "1"];
+    q00 -> q10  [label "0"];
+    qe1 -> qe2 [label = "1"];
+    qe1 -> qe0 [label = "0"];
+    qe0 -> qe0 [label = "0"];
+    qe0 -> qe1 [label = "1"];
+    qe2 -> qe3 [label = "1"];
+    qe2 -> qe0 [label = "0"];
+    qe3 -> qe3 [label = "1"];
+    qe3 -> qe0 [label = "0"];
+    q10 -> q20 [label = "0"];
+    q10 -> qe1 [label = "1"];
+    q20 -> q30 [label = "0"];
+    q20 -> qe1 [label = "1"];
+    q30 -> q30 [label = "0"];
+    q30 -> q31 [label = "1"];
+    q31 -> q30 [label = "0"];
+    q31 -> q32 [label = "1"];
+    q32 -> q30 [label = "0"];
+    q32 -> q33 [label = "1"];
+    q33 -> q33 [label = "1"];
+    q33 -> q30 [label = "0"];
+  }
+#+END_SRC
