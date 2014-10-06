@@ -10,7 +10,7 @@
    For any string $w=w_1 w_2 \ldots w_n$ then $w^R = w_n w_{n-1} \ldots w_1$ is the reverse of the string. For any language $A$, let $A^R = \{ w^R | w \in A \}$. Prove that if $A$ is regular then so is $A^R$. 
 ** Problem 4
    Give NFAs for the following languages 
-   + $\{ w | w \text{ uses an arbitrary number of all but one of } \{a,b,c,d\} \}$ (Clarification: for the purposes of this language strings such as $ab$, $a$, $\epsilon$ are all *in* the language)
+   + $\{ w | w \text{ uses an arbitrary number of all but one of } \{a,b,c,d\} \}$ (Clarification: for the purposes of this language strings such as $ab$, $a$, $\epsilon$ are all *in* the language. Basically, any string that doesn't use all four letters of the alphabet is in the language.)
    + $\{ w | w \text{ ends with a zero} \}$ but you must use only two states
 ** Problem 5
    (from 1.38 in Sipser) An all-NFA M is a 5-tuple (Q, \Sigma, \delta, q_0, F) that is like an NFA accept that the acceptance condition is that /every/ possible state the NFA can be in at the end of processing the string must be an accept state. Prove that all-NFAs are equivalent in power to DFAs. Hint: what does the acceptance condition mean in terms of \exists and \forall and if there are /no/ possible states you can be in?
