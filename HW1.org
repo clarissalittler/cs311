@@ -1,8 +1,12 @@
+#+TITLE: Homework 1
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+
 * HW 1: Regular Languages
 ** Problem 1 
    Give state diagrams of DFAs for the following languages
    + $\{ w | w \text{ contains the substring} ab \text{ and } ba  \}$
-   + $\{ w | w \text{ contains an even number of 0s or exactly three 1s} \}$
+   + $\{ w | w \text{ contains an even number of 0s or exactly three 1s} \}$ (hint: this is the union of two languages)
    + $\{ w | w \text{ is a binary multiple of 5} \}$ Note: there's a trick to this one. As a hint there should be a total of /five/ states in your DFA and only one accept state. As another hint, think about reading a binary number from left to right and how you calculate the number as an iterative process.
 ** Problem 2
    Prove or disprove the following: let $D$ be a DFA with $k$-states. If the language $L(D)$ is /finite/ then there exists at least one string $s$ of length at-most $k-1$ such that $D$ does not accept  $s$. Hint: what do we know about a DFA if its language is finite?
