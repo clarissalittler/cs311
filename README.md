@@ -1,5 +1,11 @@
 Welcome to CS 311: Theory of Computation.
 
+Updates <span class="timestamp-wrapper"><span class="timestamp">[2014-10-07 Tue]</span></span>:
+
+-   The first homework has been pushed back to 10/21 from 10/16
+-   Future homeworks are pushed back accordingly
+-   Any adjustments to overall syllabus will be reflected in the syllabus document
+
 Most of the materials for this course will be found in this repository: lecture notes, assignments, and material for studying for the final. 
 
 Let's talk about the goals of this course. By the end of this class I want everyone to

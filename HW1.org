@@ -2,7 +2,7 @@
 #+AUTHOR: Clarissa Littler
 #+OPTIONS: toc:nil
 
-* HW 1: Regular Languages
+* HW 1: Regular Languages (Due 10/21/2014)
 ** Problem 1 
    Give state diagrams of DFAs for the following languages
    + $\{ w | w \text{ contains the substring} ab \text{ and } ba  \}$

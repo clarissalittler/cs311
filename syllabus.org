@@ -28,7 +28,7 @@
   + Topics: 
     + Equivalence between of NFAs and DFAs
     + Constructions on NFAs and DFAs
-      + Union and Intersection for NFAs
+      + Union for NFAs (and why intersection is hard)
       + Concatenation
       + Complement
       + Kleene star
@@ -64,9 +64,6 @@
     + CFG to PDA conversion
     + CFL Pumping Lemma
     + Worksheet 6: Context Free Grammars
-  + Admin: 
-    + HW 1 due
-    + HW 1 solutions distributed
 * Lecture 7: 10/21
   + Topics: 
     + Sipser 2nd ed pgs 137 - 148
@@ -77,6 +74,9 @@
     + First Examples of Turing machines
     + Deciders vs. Recognizers
     + Worksheet 7: Equivalence of CFGs and PDAs, CFL Pumping Lemma
+  + Admin: 
+    + HW 1 due
+    + HW 1 solutions distributed
 * Lecture 8: 10/23
   + Topics: 
     + Sipser 2nd ed pgs 149 - 159, 165 - 172
@@ -102,8 +102,6 @@
       + \overline{A_{TM}}
       + Proof that a recognizable, but not decidable language, has an unrecognizable complement
     + Worksheet 9: Diagonalization and Non-determinism
-  + Admin:
-    + HW 2 due
 * Lecture 10: 10/30 
   + Topics: 
     + Sipser 2nd ed pgs 206 - 211
@@ -123,6 +121,8 @@
     + Proving a language recognizable with computable reductions
     + Proving a language undecidable
     + Proving a language unrecognizable
+  + Admin:
+    + HW 2 due
 * Lecture 12: 11/6
   + Topics: 
     + Sipser 2nd ed pgs 247 - 256
@@ -133,8 +133,6 @@
     + O-notation
     + Complexity class of P
     + Examples of problems in P
-  + Admin:
-    + HW 3 due
 * Lecture 13: 11/13 (11/11 is Veteran's Day)
   + Topics: 
     + Sipser 2nd ed pgs 256 - 294 (just skim 283 on)
@@ -145,14 +143,14 @@
     + NP-hard
     + NP-complete
     + Proving a language is NP-complete
+  + Admin:
+    + HW 3 due
 * Lecture 14: 11/18
   + Topics:
     + Untyped lambda calculus
     + Church encodings
     + Y-combinator
     + Programming with lambda calculus
-  + Admin:
-    + HW 4 due
 * Lecture 15: 11/20
   + Topics:
     + Typed lambda calculus
@@ -165,6 +163,8 @@
   + Topics:
     + Probably overflow lecture time for when we slow down
     + Otherwise special topics in computability
+  + Admin:
+    + HW 4 due
 * Lecture 17: 12/2 (Thanksgiving is 11/27)
   + Topics:
    + Probably overflow lecture time for when we slow down
