@@ -3,5 +3,10 @@
 #+OPTIONS: toc: nil
 
 * Pumping Lemma 
-Try to prove that {w | w has an twice as many 1s as 0s} is /not/ regular using the pumping lemma. Then write down a couple of languages and either define a DFA, NFA, or RegExp for them *or* prove they're not regular.
+Prove, using the pumping lemma, that the following languages are not regular: 
+
++ {w | w has an twice as many 1s as 0s} 
++ (\Sigma = {0,1,2}) {0^n1^m2^k | where m must be bigger than n or k}
+
+Then write down a couple of languages and either define a DFA, NFA, or RegExp for them *or* prove they're not regular.
 

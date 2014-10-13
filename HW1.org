@@ -2,10 +2,10 @@
 #+AUTHOR: Clarissa Littler
 #+OPTIONS: toc:nil
 
-* HW 1: Regular Languages (Due 10/21/2014)
+* HW 1: Regular Languages (Due 10/21/2014T)
 ** Problem 1 
    Give state diagrams of DFAs for the following languages
-   + $\{ w | w \text{ contains the substring} ab \text{ and } ba  \}$
+   + $\{ w | w \text{ contains the substring} ab \text{ and } ba  \}$ (\Sigma = {a,b})
    + $\{ w | w \text{ contains an even number of 0s or exactly three 1s} \}$ (hint: this is the union of two languages)
    + $\{ w | w \text{ is a binary multiple of 5} \}$ Note: there's a trick to this one. As a hint there should be a total of /five/ states in your DFA and only one accept state. As another hint, think about reading a binary number from left to right and how you calculate the number as an iterative process.
 ** Problem 2
