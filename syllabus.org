@@ -49,31 +49,22 @@
     + Sipser 3rd ed pgs 77 - 82, 101 - 111 
     + Definition of the pumping lemma
     + Examples of using the pumping lemma
-    + Introduction to Context-Free Languages
-    + Introduction to context-free grammars
-    + Formal definition of context-free grammars
-    + Examples of CFGs
     + Worksheet 5: Pumping Lemma
 * Lecture 6: 10/16
   + Topics: 
     + Sipser 2nd ed pgs 107 - 127
     + Sipser 3rd ed pgs 111 - 129
-    + PDAs
-    + Chomsky Normal Form
-    + Examples of PDAs
-    + CFG to PDA conversion
-    + CFL Pumping Lemma
-    + Worksheet 6: Context Free Grammars
+    + Unintended study hall
 * Lecture 7: 10/21
   + Topics: 
     + Sipser 2nd ed pgs 137 - 148
     + Sipser 3rd ed pgs 165 - 175
-    + More CFL pumping lemma
-    + Introduction to Turing machines
-    + Discussion of informal descriptions vs. state machines
-    + First Examples of Turing machines
-    + Deciders vs. Recognizers
-    + Worksheet 7: Equivalence of CFGs and PDAs, CFL Pumping Lemma
+    + Introduction to Context-Free Languages
+    + Introduction to context-free grammars
+    + Formal definition of context-free grammars
+    + Examples of CFGs
+    + Chomsky Normal Form
+    + Worksheet 6: Context Free Grammars
   + Admin: 
     + HW 1 due
     + HW 1 solutions distributed
@@ -81,18 +72,41 @@
   + Topics: 
     + Sipser 2nd ed pgs 149 - 159, 165 - 172
     + Sipser 3rd ed pgs 176 - 187, 193 - 201
+    + PDAs
+    + Examples of PDAs
+    + CFG to PDA conversion
+    + Worksheet 7: PDAs and Equivalence of CFGs and PDAs
+* Lecture 9: 10/28
+  + Topics:
+    + CFL pumping lemma
+    + Examples thereof
+    + Worksheet 8: CFL pumping lemma
+* Lecture 10: 10/30
+   + Topics: 
+    + Introduction to Turing machines
+    + Discussion of informal descriptions vs. state machines
+    + First Examples of Turing machines
+    + Deciders vs. Recognizers
     + Examples of state machine descriptions for Turing machines
-    + Non-deterministic Turing machines/non-deterministic choice
     + More examples of informal descriptions
       + What is allowed in an informal description?
-      + Machines simulating other machines
-    + Examples of languages that are decidable
-    + Examples of decidable use of non-deterministic choice
-    + Worksheet 8: Turing Machines
-* Lecture 9: 10/28
+      + Machines simulating other machines    
+    + Worksheet 9: Turing Machines
+* Lecture 11: 11/4 
+    + Topics:
+      + Variants of Turing machines
+	+ multi-tape
+	+ Non-deterministic Turing machines/non-deterministic choice
+      + Examples of languages that are decidable
+      + Examples of decidable use of non-deterministic choice
+      + Worksheet 10: Practice with non-deterministic choice
+ + Admin:
+    + HW 2 due
+* Lecture 12: 11/6
   + Topics: 
     + Sipser 2nd ed pgs 173 - 182
     + Sipser 3rd ed pgs 201 - 210
+    + Goedel numberings
     + Proving that there exists a recognizable, but not decidable language
       + Russell's Paradox
       + Halting problem
@@ -101,8 +115,8 @@
     + Languages that are neither recognizable nor decidable
       + \overline{A_{TM}}
       + Proof that a recognizable, but not decidable language, has an unrecognizable complement
-    + Worksheet 9: Diagonalization and Non-determinism
-* Lecture 10: 10/30 
+    + Worksheet 11: Diagonalization
+* Lecture 13: 11/13 (11/11 is Veteran's Day) 
   + Topics: 
     + Sipser 2nd ed pgs 206 - 211
     + Sipser 3rd ed pgs 234 - 238
@@ -112,7 +126,7 @@
     + Examples of computable reductions
     + Properties of computable reductions
     + Worksheet 10: Computable Functions and Reductions
-* Lecture 11: 11/4
+* Lecture 14: 11/18
   + Topics: 
     + Sipser 2nd ed pgs 206 - 211
     + Sipser 3rd ed pgs 234 - 238
@@ -122,8 +136,8 @@
     + Proving a language undecidable
     + Proving a language unrecognizable
   + Admin:
-    + HW 2 due
-* Lecture 12: 11/6
+    + HW 3 due
+* Lecture 15: 11/20
   + Topics: 
     + Sipser 2nd ed pgs 247 - 256
     + Sipser 3rd ed pgs 275 - 284
@@ -133,7 +147,7 @@
     + O-notation
     + Complexity class of P
     + Examples of problems in P
-* Lecture 13: 11/13 (11/11 is Veteran's Day)
+* Lecture 16: 11/25
   + Topics: 
     + Sipser 2nd ed pgs 256 - 294 (just skim 283 on)
     + Sipser 3rd ed pgs 284 - 332 (just skim 311 on)
@@ -143,35 +157,14 @@
     + NP-hard
     + NP-complete
     + Proving a language is NP-complete
-  + Admin:
-    + HW 3 due
-* Lecture 14: 11/18
+* Lecture 17: 12/2 (11/27 is thanksgiving)
   + Topics:
     + Untyped lambda calculus
+    + Evaluation rules
     + Church encodings
     + Y-combinator
-    + Programming with lambda calculus
-* Lecture 15: 11/20
-  + Topics:
-    + Typed lambda calculus
-    + Statement of strong-normalization
-    + Argument that not every untyped term is typeable
-    + Connections of typed lambda calculus to logic
-    + Proofs-as-programs
-    + Consistency of the logic
-* Lecture 16: 11/25
-  + Topics:
-    + Probably overflow lecture time for when we slow down
-    + Otherwise special topics in computability
   + Admin:
-    + HW 4 due
-* Lecture 17: 12/2 (Thanksgiving is 11/27)
-  + Topics:
-   + Probably overflow lecture time for when we slow down
-   + Otherwise special topics in computability
+    + Homework 4 due
 * Lecture 18: 12/4
-  + Topics:
-    + Review of course
-  + Admin: 
-    + HW 5 due
+  + Course Review
 * Final Exam: 12/9 5:30-7:20pm
