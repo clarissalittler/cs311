@@ -1,5 +1,12 @@
 Welcome to CS 311: Theory of Computation.
 
+Updates <span class="timestamp-wrapper"><span class="timestamp">[2014-10-20 Mon]</span></span>:
+
+-   Assignment 5 has been dropped
+-   Syllabus has been adjusted to slow pace of course slightly
+-   Assignments will now each be 17.5 % of grade, putting slightly more emphasis on final but not really changing overall course dynamic
+-   Assignment due dates have been redistributed
+
 Updates <span class="timestamp-wrapper"><span class="timestamp">[2014-10-07 Tue]</span></span>:
 
 -   The first homework has been pushed back to 10/21 from 10/16
