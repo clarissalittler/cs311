@@ -18,7 +18,7 @@
 <li><a href="#sec-14">14. Lecture 14: 11/18</a></li>
 <li><a href="#sec-15">15. Lecture 15: 11/20</a></li>
 <li><a href="#sec-16">16. Lecture 16: 11/25</a></li>
-<li><a href="#sec-17">17. Lecture 17: 12/2 (Thanksgiving is 11/27)</a></li>
+<li><a href="#sec-17">17. Lecture 17: 12/2 (11/27 is thanksgiving)</a></li>
 <li><a href="#sec-18">18. Lecture 18: 12/4</a></li>
 <li><a href="#sec-19">19. Final Exam: 12/9 5:30-7:20pm</a></li>
 </ul>
@@ -85,10 +85,6 @@
     -   Sipser 3rd ed pgs 77 - 82, 101 - 111
     -   Definition of the pumping lemma
     -   Examples of using the pumping lemma
-    -   Introduction to Context-Free Languages
-    -   Introduction to context-free grammars
-    -   Formal definition of context-free grammars
-    -   Examples of CFGs
     -   Worksheet 5: Pumping Lemma
 
 # Lecture 6: 10/16<a id="sec-6" name="sec-6"></a>
@@ -96,24 +92,19 @@
 -   Topics: 
     -   Sipser 2nd ed pgs 107 - 127
     -   Sipser 3rd ed pgs 111 - 129
-    -   PDAs
-    -   Chomsky Normal Form
-    -   Examples of PDAs
-    -   CFG to PDA conversion
-    -   CFL Pumping Lemma
-    -   Worksheet 6: Context Free Grammars
+    -   Unintended study hall
 
 # Lecture 7: 10/21<a id="sec-7" name="sec-7"></a>
 
 -   Topics: 
     -   Sipser 2nd ed pgs 137 - 148
     -   Sipser 3rd ed pgs 165 - 175
-    -   More CFL pumping lemma
-    -   Introduction to Turing machines
-    -   Discussion of informal descriptions vs. state machines
-    -   First Examples of Turing machines
-    -   Deciders vs. Recognizers
-    -   Worksheet 7: Equivalence of CFGs and PDAs, CFL Pumping Lemma
+    -   Introduction to Context-Free Languages
+    -   Introduction to context-free grammars
+    -   Formal definition of context-free grammars
+    -   Examples of CFGs
+    -   Chomsky Normal Form
+    -   Worksheet 6: Context Free Grammars
 -   Admin: 
     -   HW 1 due
     -   HW 1 solutions distributed
@@ -123,20 +114,49 @@
 -   Topics: 
     -   Sipser 2nd ed pgs 149 - 159, 165 - 172
     -   Sipser 3rd ed pgs 176 - 187, 193 - 201
+    -   PDAs
+    -   Examples of PDAs
+    -   CFG to PDA conversion
+    -   Worksheet 7: PDAs and Equivalence of CFGs and PDAs
+
+# Lecture 9: 10/28<a id="sec-9" name="sec-9"></a>
+
+-   Topics:
+    -   CFL pumping lemma
+    -   Examples thereof
+    -   Worksheet 8: CFL pumping lemma
+
+# Lecture 10: 10/30<a id="sec-10" name="sec-10"></a>
+
+-   Topics: 
+    -   Introduction to Turing machines
+    -   Discussion of informal descriptions vs. state machines
+    -   First Examples of Turing machines
+    -   Deciders vs. Recognizers
     -   Examples of state machine descriptions for Turing machines
-    -   Non-deterministic Turing machines/non-deterministic choice
     -   More examples of informal descriptions
         -   What is allowed in an informal description?
         -   Machines simulating other machines
+    -   Worksheet 9: Turing Machines
+
+# Lecture 11: 11/4<a id="sec-11" name="sec-11"></a>
+
+-   Topics:
+    -   Variants of Turing machines
+        -   multi-tape
+        -   Non-deterministic Turing machines/non-deterministic choice
     -   Examples of languages that are decidable
     -   Examples of decidable use of non-deterministic choice
-    -   Worksheet 8: Turing Machines
+    -   Worksheet 10: Practice with non-deterministic choice
+-   Admin:
+    -   HW 2 due
 
-# Lecture 9: 10/28<a id="sec-9" name="sec-9"></a>
+# Lecture 12: 11/6<a id="sec-12" name="sec-12"></a>
 
 -   Topics: 
     -   Sipser 2nd ed pgs 173 - 182
     -   Sipser 3rd ed pgs 201 - 210
+    -   Goedel numberings
     -   Proving that there exists a recognizable, but not decidable language
         -   Russell's Paradox
         -   Halting problem
@@ -145,9 +165,9 @@
     -   Languages that are neither recognizable nor decidable
         -   \overline{A<sub>TM</sub>}
         -   Proof that a recognizable, but not decidable language, has an unrecognizable complement
-    -   Worksheet 9: Diagonalization and Non-determinism
+    -   Worksheet 11: Diagonalization
 
-# Lecture 10: 10/30<a id="sec-10" name="sec-10"></a>
+# Lecture 13: 11/13 (11/11 is Veteran's Day)<a id="sec-13" name="sec-13"></a>
 
 -   Topics: 
     -   Sipser 2nd ed pgs 206 - 211
@@ -159,7 +179,7 @@
     -   Properties of computable reductions
     -   Worksheet 10: Computable Functions and Reductions
 
-# Lecture 11: 11/4<a id="sec-11" name="sec-11"></a>
+# Lecture 14: 11/18<a id="sec-14" name="sec-14"></a>
 
 -   Topics: 
     -   Sipser 2nd ed pgs 206 - 211
@@ -170,9 +190,9 @@
     -   Proving a language undecidable
     -   Proving a language unrecognizable
 -   Admin:
-    -   HW 2 due
+    -   HW 3 due
 
-# Lecture 12: 11/6<a id="sec-12" name="sec-12"></a>
+# Lecture 15: 11/20<a id="sec-15" name="sec-15"></a>
 
 -   Topics: 
     -   Sipser 2nd ed pgs 247 - 256
@@ -184,7 +204,7 @@
     -   Complexity class of P
     -   Examples of problems in P
 
-# Lecture 13: 11/13 (11/11 is Veteran's Day)<a id="sec-13" name="sec-13"></a>
+# Lecture 16: 11/25<a id="sec-16" name="sec-16"></a>
 
 -   Topics: 
     -   Sipser 2nd ed pgs 256 - 294 (just skim 283 on)
@@ -195,46 +215,19 @@
     -   NP-hard
     -   NP-complete
     -   Proving a language is NP-complete
--   Admin:
-    -   HW 3 due
 
-# Lecture 14: 11/18<a id="sec-14" name="sec-14"></a>
+# Lecture 17: 12/2 (11/27 is thanksgiving)<a id="sec-17" name="sec-17"></a>
 
 -   Topics:
     -   Untyped lambda calculus
+    -   Evaluation rules
     -   Church encodings
     -   Y-combinator
-    -   Programming with lambda calculus
-
-# Lecture 15: 11/20<a id="sec-15" name="sec-15"></a>
-
--   Topics:
-    -   Typed lambda calculus
-    -   Statement of strong-normalization
-    -   Argument that not every untyped term is typeable
-    -   Connections of typed lambda calculus to logic
-    -   Proofs-as-programs
-    -   Consistency of the logic
-
-# Lecture 16: 11/25<a id="sec-16" name="sec-16"></a>
-
--   Topics:
-    -   Probably overflow lecture time for when we slow down
-    -   Otherwise special topics in computability
 -   Admin:
-    -   HW 4 due
-
-# Lecture 17: 12/2 (Thanksgiving is 11/27)<a id="sec-17" name="sec-17"></a>
-
--   Topics:
-    -   Probably overflow lecture time for when we slow down
-    -   Otherwise special topics in computability
+    -   Homework 4 due
 
 # Lecture 18: 12/4<a id="sec-18" name="sec-18"></a>
 
--   Topics:
-    -   Review of course
--   Admin: 
-    -   HW 5 due
+-   Course Review
 
 # Final Exam: 12/9 5:30-7:20pm<a id="sec-19" name="sec-19"></a>
