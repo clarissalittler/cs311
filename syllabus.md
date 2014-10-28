@@ -148,8 +148,6 @@
     -   Examples of languages that are decidable
     -   Examples of decidable use of non-deterministic choice
     -   Worksheet 10: Practice with non-deterministic choice
--   Admin:
-    -   HW 2 due
 
 # Lecture 12: 11/6<a id="sec-12" name="sec-12"></a>
 
@@ -166,6 +164,8 @@
         -   \overline{A<sub>TM</sub>}
         -   Proof that a recognizable, but not decidable language, has an unrecognizable complement
     -   Worksheet 11: Diagonalization
+-   Admin:
+    -   HW 2 due
 
 # Lecture 13: 11/13 (11/11 is Veteran's Day)<a id="sec-13" name="sec-13"></a>
 

@@ -1,5 +1,9 @@
 Welcome to CS 311: Theory of Computation.
 
+Updates <span class="timestamp-wrapper"><span class="timestamp">[2014-10-28 Tue]</span></span>:
+
+-   Moved up HW 2 due date to 11/6
+
 Updates <span class="timestamp-wrapper"><span class="timestamp">[2014-10-20 Mon]</span></span>:
 
 -   Assignment 5 has been dropped

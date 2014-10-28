@@ -1,5 +1,8 @@
 Welcome to CS 311: Theory of Computation.
 
+Updates [2014-10-28 Tue]:
+  + Moved up HW 2 due date to 11/6
+
 Updates [2014-10-20 Mon]:
   + Assignment 5 has been dropped
   + Syllabus has been adjusted to slow pace of course slightly
