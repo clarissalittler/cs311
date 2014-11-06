@@ -298,7 +298,7 @@ In order to do that, however, we need a tool called the pumping lemma for regula
 
 \begin{itemize}
 \item For any regular language $L$, there exists a constant $p$ that we'll call the pumping constant.
-\item For all strings $w$ such that $|w| \geq p$, then \emph{there exists} strings $x$,$y$, and $z$ such that $w = xyz$ \emph{and} $|xy| < p$ \emph{and} $|y| \geq 0$ \emph{and} such that for all numbers $i \geq 0$ then $xy^iz$ is in $L$.
+\item For all strings $w$ such that $|w| \geq p$, then \emph{there exists} strings $x$,$y$, and $z$ such that $w = xyz$ \emph{and} $|xy| \le p$ \emph{and} $|y| > 0$ \emph{and} such that for all numbers $i \geq 0$ then $xy^iz$ is in $L$.
 
 Now what does the pumping lemma actually mean? It tells us that for every regular language there must exist \emph{some} size $p$ such that all strings of size $p$ or larger must have some kind of "loop" that can be repeated an arbitrary many times. We can use this to prove that a language isn't regular, by showing that the pumping lemma does \emph{not} hold. If the pumping lemma doesn't hold for a language, and yet the pumping lemma holds for all regular languages, then the language cannot be regular.
 
@@ -557,11 +557,11 @@ Finally our last topic on context-free languages: the context free version of th
 So the pumping lemma for context free languages states that if a language is context free then
 \begin{itemize}
 \item there exists some number $p$, called the pumping constant such that
-\item for all strings $w$ in the language such that $|w| \le p$, then
+\item for all strings $w$ in the language such that $|w| \ge p$, then
 \item there exists $u,v,x,y,z$ such that
 \item $w = uvxyz$ and
 \item $|vxy| \le p$ and
-\item $|vy| \le 0$ and
+\item $|vy| > 0$ and
 \item forall $i \ge 0$, $uv^ixy^iz$ is in the language
 \end{itemize}
 
