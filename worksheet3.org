@@ -1,13 +1,20 @@
 #+TITLE: In-Class Worksheet 3: Equivalence of NFAs and DFAs
 #+AUTHOR: Clarissa Littler
-#+OPTIONS: toc: nil
+#+OPTIONS: toc:nil
 
-* NFAs
-  Write NFAs for the following languages and then convert them into DFAs
-  + {w | w has at least two 1s }
-  + {w | w is an even # of 0s or an odd # of 1s} (one /or/ the other)
-* Constructions
-  + Write down NFAs for a couple of simple regular languages
-  + Try combining the NFAs you defined using some combination of concatenation, union, intersection, and Kleene star
-  + Write down the /language/ corresponding to this combination
+* NFAs to DFAs
+  Write an NFA for the following language and then convert it into a DFA: 
+  {w | w is an even number of 0s or an odd number of 1s} (/or/ not /and/ or /xor/)
 
+* Constructions and NFAs
+  Consider the following languages 
+  + L_1 = { w | w has less than 3 0s}
+  + L_2 = { w | w has the substring 0101}
+
+  Now:
+  + write down NFAs for each of these
+  + combine them to make NFAs for the following languages
+    + $L_1 \cdot L_2$
+    + $L_1 \cup L_2$
+    + $L_1^*$
+    + $L_2^*$

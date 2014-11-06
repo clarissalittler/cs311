@@ -1,5 +1,22 @@
 Welcome to CS 311: Theory of Computation.
 
+Updates <span class="timestamp-wrapper"><span class="timestamp">[2014-10-28 Tue]</span></span>:
+
+-   Moved up HW 2 due date to 11/6
+
+Updates <span class="timestamp-wrapper"><span class="timestamp">[2014-10-20 Mon]</span></span>:
+
+-   Assignment 5 has been dropped
+-   Syllabus has been adjusted to slow pace of course slightly
+-   Assignments will now each be 17.5 % of grade, putting slightly more emphasis on final but not really changing overall course dynamic
+-   Assignment due dates have been redistributed
+
+Updates <span class="timestamp-wrapper"><span class="timestamp">[2014-10-07 Tue]</span></span>:
+
+-   The first homework has been pushed back to 10/21 from 10/16
+-   Future homeworks are pushed back accordingly
+-   Any adjustments to overall syllabus will be reflected in the syllabus document
+
 Most of the materials for this course will be found in this repository: lecture notes, assignments, and material for studying for the final. 
 
 Let's talk about the goals of this course. By the end of this class I want everyone to

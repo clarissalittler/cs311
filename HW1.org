@@ -1,16 +1,20 @@
-* HW 1: Regular Languages
+#+TITLE: Homework 1
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+
+* HW 1: Regular Languages (Due 10/21/2014T)
 ** Problem 1 
    Give state diagrams of DFAs for the following languages
-   + $\{ w | w \text{ contains the substring} ab \text{ and } ba  \}$
-   + $\{ w | w \text{ contains an even number of 0s or exactly three 1s} \}$
-   + $\{ w | w \text{ is a binary multiple of 5} \}$ Note: there's a trick to this one. As a hint there should be a total of /five/ states in your DFA and only one accept state. As another hint, think about reading a binary number from left to right and how you calculate the number as an iterative process.
+   + $\{ w | w \text{ contains the substring} ab \text{ and } ba  \}$ (\Sigma = {a,b})
+   + $\{ w | w \text{ contains an even number of 0s or exactly three 1s} \}$ (hint: this is the union of two languages)
+   + $\{ w | w \text{ is a binary multiple of 5} \}$ Note: there's a trick to this one. As a hint there should be a total of /five/ states in your DFA and only one accept state. As another hint, think about reading a binary number from left to right and how you calculate the number as an iterative process. Clarification: [2014-10-13 Mon] Depending on if you want to accept the empty string in the language it could actually be 6 states. It's 5 states if you let the empty string count as the binary number 0, but you could also consider the empty string to be NaN.
 ** Problem 2
    Prove or disprove the following: let $D$ be a DFA with $k$-states. If the language $L(D)$ is /finite/ then there exists at least one string $s$ of length at-most $k-1$ such that $D$ does not accept  $s$. Hint: what do we know about a DFA if its language is finite?
 ** Problem 3
    For any string $w=w_1 w_2 \ldots w_n$ then $w^R = w_n w_{n-1} \ldots w_1$ is the reverse of the string. For any language $A$, let $A^R = \{ w^R | w \in A \}$. Prove that if $A$ is regular then so is $A^R$. 
 ** Problem 4
    Give NFAs for the following languages 
-   + $\{ w | w \text{ uses an arbitrary number of all but one of } \{a,b,c,d\} \}$ (Clarification: for the purposes of this language strings such as $ab$, $a$, $\epsilon$ are all *in* the language)
+   + $\{ w | w \text{ uses an arbitrary number of all but one of } \{a,b,c,d\} \}$ (Clarification: for the purposes of this language strings such as $ab$, $a$, $\epsilon$ are all *in* the language. Basically, any string that doesn't use all four letters of the alphabet is in the language.)
    + $\{ w | w \text{ ends with a zero} \}$ but you must use only two states
 ** Problem 5
    (from 1.38 in Sipser) An all-NFA M is a 5-tuple (Q, \Sigma, \delta, q_0, F) that is like an NFA accept that the acceptance condition is that /every/ possible state the NFA can be in at the end of processing the string must be an accept state. Prove that all-NFAs are equivalent in power to DFAs. Hint: what does the acceptance condition mean in terms of \exists and \forall and if there are /no/ possible states you can be in?
