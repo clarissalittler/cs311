@@ -1,2 +1,9 @@
-#+TITLE: In-Class Worksheet 11: More Computable Reductions
+#+TITLE: In-Class Worksheet 11: Computable Reductions
 #+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+
+Construct the following reductions
+
++ A computational reduction from the ordinary halting problem to H'_{TM} = { M | M halts on every input}
++ A computational reduction /from/ the language { 0^{2^n} | n \ge 0} to the language {0} (this is actually an example of a more general principle)
++ A reduction from the language {(N,w) | N is an NFA that accepts w} /to/ the language {(M,w) | M is a DFA that accepts w}

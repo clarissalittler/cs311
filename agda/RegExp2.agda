@@ -23,6 +23,19 @@ data RegExp : Set where
   _∪_ : RegExp -> RegExp -> RegExp
   _* : RegExp -> RegExp
 
+conjR : RegExp -> RegExp -> RegExp 
+conjR < x > r2 = {!!}
+conjR ⊥ r2 = ⊥
+conjR ε < x > = ⊥
+conjR ε ⊥ = ⊥
+conjR ε ε = ε
+conjR ε (r2 ∘ r3) = {!!}
+conjR ε (r2 ∪ r3) = {!!}
+conjR ε (r2 *) = ε
+conjR (r1 ∘ r2) r3 = {!!}
+conjR (r1 ∪ r2) r3 = {!!}
+conjR (r1 *) r2 = {!!}
+
 data _¿_ : List Char -> RegExp -> Set where
   matchChar : (a : Char) ->  [ a ] ¿ < a >
   matchEpsilon : [] ¿ ε

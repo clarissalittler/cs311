@@ -1,5 +1,9 @@
-#+TITLE: In-Class Worksheet 10: Computable Functions and Reductions
+#+TITLE: In-Class Worksheet 9: More Turing Machines And Paradoxes
 #+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
 
-* Computable Functions
-* Computable Reductions
+Write down the /informal/ description of a non-deterministic Turing machine that decides the following languages: 
+
++ {w | w is not a prime number}. For the purposes of this question, go ahead and assume that things such as testing multiplication and equality are understood decidable operations that you're allowed to call within your description. Note that there's more than one right answer here, but in at least a couple of the solutions non-determinism is useful.
++ { (G , k) | G has a clique with k nodes} (A clique is a fully connected subgraph. You may assume that testing to see if two nodes are connected is a primitive operation)
++ { (C , w) | C is a context-free grammar that generates w } (hint: in order to turn this into a bounded search that is guaranteed to terminate think about Chomsky Normal Form and what properties you proved in the homework)

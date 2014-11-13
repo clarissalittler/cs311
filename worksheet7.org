@@ -1,12 +1,11 @@
-#+TITLE: In-Class Worksheet 7: Equivalence of CFGs and PDAs
+#+TITLE: In-Class Worksheet 7: PDAs
 #+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
 
-For this exercise try the following:
-
-+ Write down any three CFGs you want
-+ Convert them, using the procedure in class, to PDAs
-
-Prove, using the CFL pumping lemma, that the following language is /not/ context-free
-
-+ { 0^n1^{m}2^{2m} | n >= 0 \wedge m > n}
+Write down pushdown automata for the following languages
+  
+  + { w | w ends with 3 1s or starts with 3 0s}
+  + { w | w has twice as many 1s as 0s}
+  + { 0^n 1^m 2^k | m is greater than n or k}
+  + { w | w is an even length palindrome }
 

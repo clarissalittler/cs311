@@ -7,4 +7,5 @@
    If $A \le_m B$ and $B$ is a regular language, is $A$ necessarily a regular language? Justify your answer.
 ** Problem 4
    Let $B$ be a decidable language with $B \neq \emptyset$ and $B \neq \Sigma^*$, then if $A$ is decidable define a computational reduction $A \le_m B$.
- 
+** Problem 5
+   (from Sipser) Let Double-SAT be the language { \phi | \phi has at least two satisfying assignments }. Show, by polynomial time reduction, that Double-SAT is NP-complete.

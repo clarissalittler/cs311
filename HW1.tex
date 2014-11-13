@@ -1,4 +1,4 @@
-% Created 2014-07-31 Thu 10:34
+% Created 2014-10-13 Mon 10:39
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -16,9 +16,9 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \tolerance=1000
-\author{clarissa}
+\author{Clarissa Littler}
 \date{\today}
-\title{HW1}
+\title{Homework 1}
 \hypersetup{
   pdfkeywords={},
   pdfsubject={},
@@ -26,17 +26,16 @@
 \begin{document}
 
 \maketitle
-\tableofcontents
 
-\section{HW 1: Regular Languages}
+\section{HW 1: Regular Languages (Due 10/21/2014T)}
 \label{sec-1}
 \subsection{Problem 1}
 \label{sec-1-1}
 Give state diagrams of DFAs for the following languages
 \begin{itemize}
-\item $\{ w | w \text{ contains the substring} ab \text{ and } ba  \}$
-\item $\{ w | w \text{ contains an even number of 0s or exactly three 1s} \}$
-\item $\{ w | w \text{ is a binary multiple of 5} \}$ Note: there's a trick to this one. As a hint there should be a total of \emph{five} states in your DFA and only one accept state. As another hint, think about reading a binary number from left to right and how you calculate the number as an iterative process.
+\item $\{ w | w \text{ contains the substring} ab \text{ and } ba  \}$ ($\Sigma$ = \{a,b\})
+\item $\{ w | w \text{ contains an even number of 0s or exactly three 1s} \}$ (hint: this is the union of two languages)
+\item $\{ w | w \text{ is a binary multiple of 5} \}$ Note: there's a trick to this one. As a hint there should be a total of \emph{five} states in your DFA and only one accept state. As another hint, think about reading a binary number from left to right and how you calculate the number as an iterative process. Clarification: \textit{[2014-10-13 Mon]} Depending on if you want to accept the empty string in the language it could actually be 6 states. It's 5 states if you let the empty string count as the binary number 0, but you could also consider the empty string to be NaN.
 \end{itemize}
 \subsection{Problem 2}
 \label{sec-1-2}
@@ -48,8 +47,18 @@ For any string $w=w_1 w_2 \ldots w_n$ then $w^R = w_n w_{n-1} \ldots w_1$ is the
 \label{sec-1-4}
 Give NFAs for the following languages 
 \begin{itemize}
-\item $\{ w | w \text{ uses all but one of } \{a,b,c,d\} \}$
+\item $\{ w | w \text{ uses an arbitrary number of all but one of } \{a,b,c,d\} \}$ (Clarification: for the purposes of this language strings such as $ab$, $a$, $\epsilon$ are all \textbf{in} the language. Basically, any string that doesn't use all four letters of the alphabet is in the language.)
 \item $\{ w | w \text{ ends with a zero} \}$ but you must use only two states
+\end{itemize}
+\subsection{Problem 5}
+\label{sec-1-5}
+(from 1.38 in Sipser) An all-NFA M is a 5-tuple (Q, $\Sigma$, $\delta$, q$_{\text{0}}$, F) that is like an NFA accept that the acceptance condition is that \emph{every} possible state the NFA can be in at the end of processing the string must be an accept state. Prove that all-NFAs are equivalent in power to DFAs. Hint: what does the acceptance condition mean in terms of $\exists$ and $\forall$ and if there are \emph{no} possible states you can be in?
+\subsection{Problem 6}
+\label{sec-1-6}
+Prove \emph{using the pumping lemma} that the following languages aren't regular. Remember, your proof needs to be a proof by contradiction in the form we did in class. 
+\begin{itemize}
+\item \{ 0$^{\text{n}}$ 1$^{\text{m}}$ | m > n\}
+\item \{ s | s has an even number of 0s and fewer 1s than pairs of 0s \}
 \end{itemize}
 % Emacs 24.3.1 (Org mode 8.2.7b)
 \end{document}

@@ -9,6 +9,7 @@
    3. write a function that counts the number of nodes in a tree (for this purpose just assume that numbers exist as a datatype and are equipped with binary addition)
 ** Problem 2
    (from Sipser) Let Double-SAT be the language { \phi | \phi has at least two satisfying assignments }. Show, by polynomial time reduction, that Double-SAT is NP-complete.
+
 ** Problem 3
    (from Sipser) Show that, if P = NP, then every language A \in P that is not trivial (either \varempty or \Sigma^*) is NP-complete.
 

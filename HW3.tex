@@ -1,4 +1,4 @@
-% Created 2014-07-31 Thu 11:39
+% Created 2014-10-20 Mon 13:35
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -16,7 +16,7 @@
 \usepackage{amssymb}
 \usepackage{hyperref}
 \tolerance=1000
-\author{clarissa}
+\author{Clarissa Littler}
 \date{\today}
 \title{HW3}
 \hypersetup{
@@ -39,12 +39,18 @@ $\delta : Q \times \Gamma \to Q \times \Gamma \times \{ R, RESET \}$
 The semantics of the $RESET$ move is that the Turing machine will go all the back to the left-most side of the tape, instead of just moving a step left. Prove that Turing machines with left reset are equivalent to ordinary Turing machines. To do this you'll need to 
 
 \begin{itemize}
-\item show that you can turn a Turing machine with left reset into an ordinary Turing machine (the easy part)
-\item show that you can turn an ordinary Turing machine into a Turing machine with left reset (the hard part)
+\item show that you can turn a Turing machine with left reset into an ordinary Turing machine
 \end{itemize}
+(the hard part)
+\begin{itemize}
+\item show that you can turn an ordinary Turing machine into a Turing machine with left reset
+\end{itemize}
+(the easy part)
+
+The easiest way to do this is to simulate one type of movement with the other.
 \subsection{Problem 2}
 \label{sec-1-2}
-Show that the Turing-decidable languages are closed under
+Show, by construction, that the Turing-decidable languages are closed under
 
 \begin{enumerate}
 \item union
@@ -63,7 +69,7 @@ Give an informal description of the following languages
 
 \subsection{Problem 4}
 \label{sec-1-4}
-Show that the Turing \emph{recognizable} languages are closed under
+Show, by construction, that the Turing \emph{recognizable} languages are closed under
 
 \begin{itemize}
 \item Kleene star
@@ -71,6 +77,6 @@ Show that the Turing \emph{recognizable} languages are closed under
 \item reversal
 \end{itemize}
 
-Are the \emph{recognizable} languages closed under complement? Can you give a counter-example?
+Are the \emph{recognizable} languages closed under complement? If not, can you give a counter-example?
 % Emacs 24.3.1 (Org mode 8.2.7b)
 \end{document}

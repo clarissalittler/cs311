@@ -1,4 +1,4 @@
-% Created 2014-08-02 Sat 12:44
+% Created 2014-09-23 Tue 11:08
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -15,6 +15,7 @@
 \usepackage{wasysym}
 \usepackage{amssymb}
 \usepackage{hyperref}
+\usepackage{proof}
 \tolerance=1000
 \author{Clarissa Littler}
 \date{\today}
@@ -26,6 +27,7 @@
 \begin{document}
 
 \maketitle
+
 These notes were originally a series of blog posts I posted on, so they still read that way at the moment. Eventually future iterations will have the lecture notes be better formatted and more like a short book. 
 \section{What is computation?}
 \label{sec-1}
@@ -45,7 +47,7 @@ What if our language $L$ is infinite, though? Without knowing something \emph{ab
 
 Most languages, on the other hand, are somewhere between these two extremes. We'll be looking at a sequence of models of computation, starting with DFAs, as we build up to Turing machines, which are a model of computation that makes our "finite time, rules, and data" definition rigorous. We will, by the end of this course, have discussed just exactly what things \emph{are} computable and give you at least some of the tools for showing that something \emph{isn't} computable. We will also tie the "is string $w$ in language $L$ " problem back into a more general notion of computation, revealing that we haven't lost anything by considering such a specific class of problems.
 
-Now, all of that being said there are some necessary mathematical preliminaries that need to be addressed. First off, this will be a very proof heavy course. Sometimes when this course is taught, the assignments tend to be "5 million ways to build a DFA" (apologies to \href{https://www.youtube.com/watch?v=RQthFDpYCys}{The Coup}), but the three of us who are teaching this term are pushing for a more mathematically mature approach. 
+Now, all of that being said there are some necessary mathematical preliminaries that need to be addressed. First off, this will be a very proof heavy course. Sometimes when this course is taught, the assignments tend to be "5 million ways to build a DFA" (apologies to \href{https://www.youtube.com/watch?v=RQthFDpYCys}{The Coup}), but I'm hoping to get at least a little more into the mathematical nature of the subject. 
 
 As such, we should discuss proof techniques. There's three major techniques that are useful in this class: proof by construction, proof by contradiction, and proof by induction. We'll tackle each of these in turn. 
 
@@ -131,9 +133,13 @@ So, yeah, we'll have to have more examples when I actually do the NFA and DFA le
 
 Given where we ended last time, we wanted something like a DFA but where an informal description such as "try $M$ or $N$ and if one of them works, accept" might make sense as an implementation of the union for regular languages. Now, what we really want here is the ability to make a \emph{non-deterministic} choice of which branch we take: $M$ or $N$. We can think of a non-deterministic choice as essentially meaning that we are trying all possible moves simultaneously, and if one of them leads to an accept state then the entire process accepts.
 
+\includegraphics[width=.9\linewidth]{union1.png}
+
 Now, if you look at the picture we want here there's something that might seem a little odd: we don't actually want to consume input as we make this branching move to try running either $M$ or $N$. This implies that we might want some kind of new move that allows us to move to a state without consuming input. If we combine both of these ideas, non-deterministic choice and transitions that do not consume input we get the definition of a non-deterministic finite automata (NFA). 
 
 More formally, we can say that an NFA is a tuple the same as a DFA except that the type of the transition function $\delta$ is different. Instead of $\delta : Q \times \Sigma \to Q$ we have $\delta : Q \times \Sigma_{\epsilon} \to P(Q)$ where $P$ is the powerset operator and for any set $A$ then $A_{\epsilon}$ is the set $A \cup \{\epsilon\}$ where $\epsilon$ is the symbol that corresponds to consuming no input. Now there's a few things we can note here. First, that because the \emph{empty set is an element of the powerset} that we're allowed to have "empty" transitions such as $\delta(q,a) = \varnothing$ which means that in the state $q$ the NFA transitions to \emph{no} states on the character $a$. This is in sharp contrast to DFAs where there needed to be exactly one transition defined per letter of the alphabet. This allows to, for example, define the NFA for the language that only contains the empty string with only a single state rather than two as follows:
+
+\includegraphics[width=.9\linewidth]{empty.png}
 
 We should also note that we need to change the formal definition of what it means for a string $w$ to be accepted by a NFA $N$. Recall that previously our definition of computation for a DFA was 
 
@@ -154,6 +160,8 @@ Now, looking at the type of our transition function we can see that since $\delt
 or in words, that $\epsilon$ is the \emph{unit} of concatenation of characters. Then we say instead of $w = w_0 \ldots w_{n-1}$ where $n$ is the length of the string and each $w_i$ is a character in $\Sigma$, we instead let $w = y_0 \ldots y_n$ where $n$ is no longer connected to the length of the string and each $y_i$ is an element of $\Sigma_{\epsilon}$. Of course, since we've modified our notion of acceptance of a string let's think for a moment and make sure that it's still sensible under our definition of computable. We still have "finite rules" and "finite data", but does it still necessarily take finite time if we're allowing this non-determinism? Consider that one can \emph{simulate} non-determinism with backtracking. We try, sequentially, each possible path for processing the input string. This might end up taking \emph{much} longer based on the possible branching, but since each individual path is finite and the finite number of states means the number of paths is finite, then the sum of all the time needed to try each path is finite. Therefore, NFAs still fit our informal definition of "computable".
 
 All this being well defined, we can perform the union in a very simple way: 
+
+\includegraphics[width=.9\linewidth]{union2.png}
 
 which is exactly what we were hoping for in the beginning.
 
@@ -209,12 +217,21 @@ First concatenation: we define, for languages $L_1$ and $L_2$ the concatenation 
 
 Now, to prove that the regular languages are closed under concatenation we will assume that we have two regular languages $L_1$ and $L_2$ and that we have NFAs $M$ which decides $L_1$ and $N$ which decides $L_2$. We'll describe in words how we take these two NFAs and make a new NFA that decides the concatenation. First, we take every accept state of $M$ and draw an $\epsilon$ transition from it to the start state of $N$. Then we take the old accept states of $M$ and demote them to regular states. That's it! Pictorially, we can see it as being something like if $M$ is
 
+\includegraphics[width=.9\linewidth]{concat1.png}
+
 and $N$ is something like
+
+\includegraphics[width=.9\linewidth]{concat2.png}
 \end{itemize}
+
 
 then after step one the concatenation looks like
 
-  and after step two will look like 
+\includegraphics[width=.9\linewidth]{concat3.png}
+
+and after step two will look like 
+\includegraphics[width=.9\linewidth]{concat4.png}
+
 The next construction we'll look at is complement. Complement is probably what it sounds like, if you have a language $L$ then the complement $\bar{L} = \{ w | w \notin L\}$. Now, this might make you uncomfortable a touch. After all, I don't find it inherently obvious that just because you can computably tell if a string is \emph{in} a language that you can computably tell if it's \emph{not} in the language. In the case of regular languages, it's actually pretty easy as we can show using DFAs. If we have a regular language $L$ and a DFA that decides it $M$, then we can construct a new DFA that decides the complement just by taking the complement of the set of accept states and leaving everything else the same. In other words, if a state was an accept state in $M$ then it's not an accept state in $\bar{M}$ and visa-versa. We can see somewhat intuitively that this is the complement: if a string would end in an accept state of $M$, then it won't be in an accept state of $M'$ and if it would \emph{not} end in an accept state of $M$ then it \emph{will} end in an accept state of $M'$. The NFA case is less simple, but the nice thing about knowing that NFAs and DFAs describe \emph{the exact same languages} is that we can use whichever representation is the simplest for our purposes.
 
 Finally, we need to describe the Kleene star. This one is slightly more complicated to describe but very simple to construct. For a language $L$, the Kleene star is $L^* = \{ w_1 \ldots w_n | n \geq 0, w_1 \ldots w_n \in L\}$. In words, the Kleene star operation takes a language and returns a new language that's the concatenation of 0 or more strings in the language. Since "0" is an option, this means that whether or not the language $L$ contains the empty string $\epsilon$, the Kleene star of the language $L^*$ \emph{does} contain $\epsilon$. 
@@ -268,8 +285,54 @@ So, now for the hard direction which is converting NFAs to RegExps. The way we'l
 Wow, those conditions might feel kinda weird, but they're meant to make the construction as easy as possible. So the way our construction works is that we can take NFAs to DFAs with the powerset construction we've seen earlier, then we can turn DFAs into GNFAs, and ultimately turn GNFAs into RegExps in a principled way.
 \end{itemize}
 
-\section{Finishing NFAs to Regexps, Pumping Lemma and Proving Languages Non-Regular}
+\section{Regular Expressions: A Digression on Formal Systems}
 \label{sec-5}
+So when discussing regular expressions, we talk a lot about "a string maches a regexp" and we've been cheating a bit by treating it as an informal intuitive concept that relies on the fact that \emph{you already know} what a regular expression does. 
+
+Here's what I think is a good way to look at: as a formal system of inference rules.
+
+You'll find an actual implementation of this in the file \href{https://github.com/clarissalittler/cs311/blob/master/agda/RegExp2.agda}{RegExp2.agda} in our repo. 
+
+First, we take the normal inductive consideration of what a regular expression is. Specifically, a regexp is a syntactic object built from the following grammar 
+
+\begin{align*}
+  R &:= c (\text{c is a character in the alphabet}) \\
+    &| R \circ R \\
+    &| R \cup R \\
+    &| R^* \\
+    &| \epsilon \\
+    &| \varnothing \\
+\end{align*}
+
+Now, remembering that a string is a sequence of characters let's define the following \emph{inference rules} which constitute the definition of the relation $w ? R$, which means that the string $w$ matches the regular expression $R$.
+
+\begin{center}
+\begin{tabular}{ll}
+Rule Name & Inference Rule\\
+match-char & $\infer{c ? c}{}$\\
+match-concat & $\infer{w_1 2_2 ? R_1 \circ R_2}{w_1 ? R_1 & w_2 ? R_2}$\\
+match-alt-l & $\infer{w ? R_1 \cup R_2}{w ? R_1}$\\
+match-alt-r & $\infer{w ? R_1 \cup R_2}{w ? R_2}$\\
+match-star-1 & $\infer{\epsilon ? R^*}{}$\\
+match-star-2 & $\infer{w_1 w_2 ? R^*}{w_1 ? R & w_2 ? R^*}$\\
+match-empty & $\infer{\epsilon ? \epsilon}{}$\\
+\end{tabular}
+\end{center}
+
+Now if we look at these rules we can see a few interesting things
+
+\begin{itemize}
+\item There's no rule for $\varnothing$, because it doesn't match anything!
+\item the empty string or a single character match themselves
+\item you can match an alternation by matching \emph{either} of the two regular expressions
+\item you match a concatenation by splitting the string into two pieces, each of which match
+\item you match the star with either the empty string \emph{or} through the recursive match
+\end{itemize}
+
+We can glue these rules together to actually derive that a string is matched by a regular expression.
+
+\section{Finishing NFAs to Regexps, Pumping Lemma and Proving Languages Non-Regular}
+\label{sec-6}
 Continuing from where we left off last time, with the definition of GNFAs, we needed to show that we can take a GNFA with our peculiar restrictions and turn it into a RegExp. Again, we follow Sipser extremely closely. In part, because all of this is tedious enough I didn't feel like trying to be original in my presentation. We start off by taking our DFA $M$ and turning it into a GNFA $N$ as follows: 
 
 \begin{itemize}
@@ -327,7 +390,7 @@ for this particular example let's pick
 We'll leave this here for now and continue next time with expanding the languages we can cover to a larger set: the context free languages
 \end{itemize}
 \section{Context Free Languages, CFGs, PDAs}
-\label{sec-6}
+\label{sec-7}
 Now we come to our next notion of computation beyond the regular languages and their associated models of computation, regexps nfas and dfas: the context free languages. Our motivating example is going to be the language we've seen repeatedly at this point, $\{0^n1^n | n \geq 0\}$. We showed last time there was \emph{no} way to make a DFA that decides this language.
 
 Again, we'll define our set of languages in terms of some model of computation. To this point, we introduce context free grammars (CFGs). A context free grammar is like a regular expression but much more powerful. The basic model of computation is the same: we have a set of symbols and rules to expand them. What's different about CFGs over RegExps is that RegExps have a pre-defined set of rules for their expansion, meanwhile part of the definition of a CFG is the set of rules for expansion of symbols. 
@@ -431,7 +494,7 @@ So when dealing with the regular languages, we had regular expressions which had
 
 That being said, if we had something that was \emph{an awful lot like} an NFA yet had a notion of memory then maybe that would solve the problem. That's exactly what we're going to introduce: Pushdown automata (PDAs). We'll get to those next time.
 \section{Introduction to PDAs}
-\label{sec-7}
+\label{sec-8}
 Continuing from last time, we have that the "machine" that corresponds to CFGs are PDAs. Informally, our machines will be finite automata with a limited notion of memory: a stack. In our transitions, we'll be allowed to not only look at the input character when making our decision but we'll also be allowed to look at the top of the stack. When we make a transition, we pop a symbol from the stack and then look at both the next character of the input stream as well as the character we just popped. Note that there's no reason why the input stream and the stack have to have the same alphabet, so in our definition of push down automata we'll allow them to be different. After we make our transition, we will optionally push another character to the top of the stack. A PDA accepts a string when we reach an accept state at the end of processing the string. This is informally computable by the definition we've been using since, because you can only look at the top character our number of rules is just going to be, roughly, the product of the number of states, the size of the input alphabet, and the size of stack alphabet. We can clearly do this in finite time for the same reasons that our NFA and DFA were finite, and we only need a finite amount of data for storing the stack and the state machine. So, this is also a nice computable definition.
 
 One thing we should address: should our PDA be deterministic or non-deterministic? If we think about our goal, which is to have a kind of machine that represents context free languages and has the same power as context free grammars, are context free grammars \emph{inherently} deterministic or non-deterministic? Let's consider a grammar such as
@@ -479,6 +542,8 @@ We say that a PDA $M$ accepts a string $w$ when $w = w\_0 \ldots w_n$ where $w_i
 
 Now that we've done all of that we can go ahead and start working out examples of PDAs and show that, indeed, they can handle the kinds of CFLs we're wanting to do. We'll label the transitions with somethig slightly more complicated than before and all our labels will be of the form "(a,b) -> c\$ where "a" is going to be the character we read from input, "b" is the character we pop off the stack, and "c" is the character we're pushing onto the stack. And the reason why those are formatted in ugly ascii rather than latex code is that I'm still not sure how to get latex excepted by the tool I'm using to make the inline graphs. In any case, let's consider what the PDA looks like for the language $\{0^n1^n | n \geq 0\}$, our old friend. The basic idea is that we're going to use the stack to track how many 0s we see before we start accepting 1s, pushing a 0 onto the stack per 0 we see in the input stream. We then pop off a 0 for each 1 we see, and then we make sure that the whole stack is empty before accepting at the end of input. Wait, shoot, how do we see if the stack is empty? We do that by pushing a special "start symbol" onto the stack during our first transition, and then by having the transition to the accept state only happen by popping the start symbol back off the stack. Also, a last notational thing is that we'll use e for $\epsilon$. Without further ado,
 
+\includegraphics[width=.9\linewidth]{matching.png}
+
 We can see how this graph implements the algorithm we just saw. Now, what about the palindromes? Let's remember that our CFG for the palindromes was
 
 \begin{itemize}
@@ -497,6 +562,8 @@ Well what we want here is to use the memory of the PDA to keep track of all the 
 \end{itemize}
 
 because they'll mean that when we make the switch from "first half" to "second half" then we'll need to use an $\epsilon$ \emph{or} 1 \emph{or} 0. Let's just see what this looks like
+
+\includegraphics[width=.9\linewidth]{palindrome.png}
 
 We can see that this follows a very similar structure to the language of matched 0s and 1s and that if we trace out something like the execution for $00100$ then it should look something like the following, where we represent the computation as a triple of $w$ which will be what's left of the string to process, $s$ which will be the state of the stack, and $q$ which is the state we're in. So we start out in $(00100,\epsilon,M_0)$ and the correctly terminating trace of the execution becomes
 
@@ -517,7 +584,7 @@ Neat, huh?
 We'll leave this lecture here and pick up next post with a sketch of the equivalence of PDAs and CFGs and a bit on the context free pumping lemma
 
 \section{Equivalence of PDAs and CFGs, CFL pumping lemma}
-\label{sec-8}
+\label{sec-9}
 So we've introduced PDAs and gone through a few simple examples of them. We've also asserted, repeatedly, that the PDAs are equivalent to CFGs in describing the context free languages. Not we need to make good on that assertion. We'll really only cover one side of the equation in detail, since it's the more mechanically interesting side as it tells us how to convert a CFG where matching can be seen as a proof search problem to a straight forward machine where the computational time is going to be proportial to the size of the input. 
 
 So we'll show how to convert a CFG into a PDA. Conceptually, we want to "simulate" the CFG's rules as part of the rules of the PDA. What we'll do is let both \emph{variables and terminals} be a part of our stack alphabet $\Gamma$, but our input alphabet $\Sigma$ will simply be the set of terminals. When we have a variable on the top of the stack we'll pop it and push back on, non-deterministically, the right hand side of one of that variable's expansion rules. Whenever we see a terminal on the top of the stack, we consume it. Finally, when the stack is empty we move to the accept state. Gosh, if we need the stack to be empty at the end of an accept state that means we should push on a special symbol before we begin our computation. Let's call it $!$. We also need to push onto the stack, before doing anything else, the start symbol of the grammar in order to get the whole simulation primed. This means that we'll have three "main" states, and other states in order to handle the pushing of symbols involved. 
@@ -530,6 +597,8 @@ An example might help things make more sense. Let's consider, again, our languag
 \end{itemize}
 
 We'll allow ourselves a little bit of a cheat at first, and push \emph{multiple} symbols at a time, and then we'll backtrack and show what it looks like if you take the cheat back out again. Consider it notational shorthand for the real graph!
+\includegraphics[width=.9\linewidth]{matchingPrime.png}
+
 You can see how we pushed multiple symbols at once and had a transition for "A" every time we saw it on the stack. Now let's do a run through in the style of the last lecture where we look at input buffer, stack, and state
 
 \begin{itemize}
@@ -547,6 +616,8 @@ You can see how we pushed multiple symbols at once and had a transition for "A" 
 \end{itemize}
 
 Since what we're doing is a straightfoward simulation of the the CFG on the stack of the PDA, hopefully it's pretty clear that this will decide the same language as the CFG did. For completion, let's include here what the PDA looks like without our cheat for pushing multiple symbols
+
+\includegraphics[width=.9\linewidth]{matchingPrime2.png}
 
 As hopefully is clear this is just expanding out the push onto the stack into multiple states that do nothing with the input and simply add symbols onto the stack.
 
@@ -598,7 +669,7 @@ and thus we've shown that the language is \emph{not} context free.
 
 Well, that pretty much wraps it up for everything we're intending to cover about context free languages in this course. There's plenty more to say, really, but it's mostly in the context of parsing or how linguists use them which is all pretty wide outside the scope of this course where we just want to treat them as an intermmediate model of computation. Onward to Turing machines! (which are chronologically before these notes, but wevs)
 \section{Informal Introduction to Turing Machines}
-\label{sec-9}
+\label{sec-10}
 (This lecture is going to appear out of order, unfortunately, but I was incredibly bored of PDAs and I really wanted to still get a post and some writing done to hit my word count goals. I'm serious, y'all, if you think pushdown automata and constructions on them are kinda boring as students just imagine trying to get up your enthusiasm about lecturing on it!)
 
 Finally we come to Turing machines, which are the main construction we've been building up to this entire time. Unlike the machines we've been dealing with previously in this course, these will encompass the \emph{entirety} of the computable functions. In a sense, honestly, we \emph{define} computability based off of what can be done by a Turing machine since it's the most general model of computation we have. 
@@ -617,7 +688,7 @@ Where does this idea come from? Fundamentally, it's inspired by the good-old-day
 
 We'll continue next post with the \emph{formal} definition of Turing machines. We'll walk through examples of Turing machines, talk about different levels of descriptions for Turing machines, and maybe even talk a little bit about the rather depressing life of Alan Turing himself. 
 \section{Formal Definition of Turing Machines}
-\label{sec-10}
+\label{sec-11}
 Now we get to the formal definition of Turing machines. The formal definition of Turing machines is much like the other machines we've seen so far: there's a state diagram, a notion of transition, and other things that can happen during that transition. Let's describe Turing machines by formal tuples the way we have before, so a Turing machine has:
 
 \begin{itemize}
@@ -676,7 +747,7 @@ I don't know if any of you have ever questioned \emph{why} it's even possible to
 
 Indeed, there are actually languages such as Coq or Agda that \emph{don't} allow for infinite loops. They can guarantee that every program will actually terminate, which is a wonderful thing to have for many reasons, but there are some programs that they just can't express, even if they're written correctly. (Some more technical people who might be reading this blog might nitpick with that statement, as you can "fake" having all computable functions by using coinduction with a non-termination monad. I'll admit that that's super cute and I love that trick but it's not quite the same thing as the program being a first-class term in the language.)
 \section{More Examples of Turing Machines and Turing Machine Variants}
-\label{sec-11}
+\label{sec-12}
 We've talked enough now about Turing machines in the abstract, now let's talk about how we're going to specify them in this class. To be completely formal, one should should always define the full state machine, but that's not going to be how we actually do things for the most part. We're going to, in general, give an \emph{informal} description of Turing machines by writing out in words what the algorithm does. First, though, let's take a couple examples straight out of Sipser as state machines then we can discuss some intuition for what informal descriptions actually make sense for Turing machines. 
 
 First, there's the language $\{0^{2^n} | n \ge 0\}$. Now the idea of the algorithm is that we'll scan across the tape and cross off half the 0s on the tape each time and if we never hit an odd number of 0s before we cross everything off, then we accept, otherwise we reject.
@@ -693,6 +764,9 @@ The informal description from Sipser is
 \end{enumerate}
 
 and the state diagram is 
+
+\includegraphics[width=.9\linewidth]{zeropowers.png}
+
 
 Now, we can see that the state diagram implements the spec of the informal description and our conceptual outline. State M3 is the state where we've seen one zero, and if we see another one then we cross it off and go back into state M2, otherwise we get to the other end we go to the error state. If we keep seeing even numbers of zeros until we hit the edge of the tape, then we go back to state M1: that control flow is what M4 does.
 
@@ -728,7 +802,7 @@ The other, similar, variant of the Turing machine is the non-deterministic Turin
 I think that'll be all for this post, and next time we'll actually get to talking about what kinds of languages are decideable, what ones are recognizable, etc.
 
 \section{Machines Simulating Machines, Some Decideability}
-\label{sec-12}
+\label{sec-13}
 Last time we mentioned casually the idea that Turing machines could simulate other Turing machines. This isn't covered much in Sipser, at least not in a way I liked, so let's talk a bit informally about how such a thing makes sense. First off, let's note that a Turing machine itself can be given some textual, finite, description as a string. Thought it might seem silly, remember 
 
 \begin{verbatim}
@@ -751,6 +825,9 @@ Last time we mentioned casually the idea that Turing machines could simulate oth
   M4 -> M1 [label = "_ -> R"];
 }
 \end{verbatim}
+
+\includegraphics[width=.9\linewidth]{zeropowersagain.png}
+
 and there's also the graphviz source for drawing that diagram. Now, that source for drawing the graph includes some data for how things should look, but other than that it's a finite text description \emph{of} the Turing machine. Now since we know that a Turing machine can have multiple tapes, let's imagine a machine that has two tapes. The first tape will contain the text description of the machine we're simulating, the second will contain the input to the simulation machine. The basic approach is that we'll step through the simulation by reading the input tape and treating it as normal and then using the tape with the description of the machine to both keep track of what state in the simulation we're in and to figure out what to do at each point. Now, you might object and say that it's not obvious that we can do the appropriate lookups and moving around for an arbitrary number of states in a finitary way. I think it \emph{is} possible, with a clever encoding, to write down the description of the Turing machine so that we go either left or right into the appropriate state on the tape which eliminates the need for a lookup, but means that we need a number of repeated copies of the states on the tape. On the other hand, we could do a naive encoding on the machine description and then just build the machine so that it does a lookup but for only a number of states up to some cutoff. We can just do different versions of the simulator for different "sizes" of Turing machines. In either case, everything will be nice and okay and finite.
 
 There's a strange and important lesson here that I'd like to expound upon for a bit. When we write programs, we're \emph{writing finite text descriptions} of algorithms. Of course, I know you all know that you've been writing text but let's let that sink in for a moment. All our programs are of finite length, the alphabets we use to write the programs are finite, and thus how many programs are there? \emph{Countably} infinite, which in the grand scheme of mathematics is a pretty tiny number. On the other hand, there are \emph{uncountably} infinite real numbers. That alone pretty much guarantees that we can't easily have exact arithmetic with real numbers. The fact that there are \emph{uncountably} infinite functions $\mathbb{N} \to \mathbb{N}$ also tells us that we're giving up a lot of possible functions by requiring that we can write finite descriptions of functions. On the \emph{other} hand, the really amazing part is just how much we can do with finite descriptions of functions. This idea that we can write finite descriptions of every Turing machine as a string is going to be integral to the rest of this topic where we explore the limits of what is computable.
@@ -766,7 +843,7 @@ Also similarly, we can do the same thing for regular expressions and reuse our m
 We can keep following Sipser pretty closely and talk about other languages related to regular languages that are decideable, but for the moment let's stop here and we'll do more on recognizable languages next time.
 
 \section{More Decidability and Recognizability}
-\label{sec-13}
+\label{sec-14}
 Continuing from last time, we want to talk more about what kinds of things are decidable and recognizable. We argued semi-formally last time that 
 
 \begin{itemize}
@@ -822,7 +899,7 @@ Okay, neato, right? Well we know that the set of all Turing machines is countabl
 
 Next time, we'll cover computable reductions and do a whole lot more with proving languages decidable, undecidable, recognizable, or unrecognizable. It'll be fun!
 \section{Recognizability and Computable Reductions}
-\label{sec-14}
+\label{sec-15}
 We return again with more on Turing recognizability and introducing the tools we need for showing that languages are decidable, recognizable, or neither.
 
 First off, we showed that there are some languages that aren't decidable last time. We've argued before, informally, that there \emph{must} be languages that can't be described by Turing machines at all and thus aren't even recognizable. Here we'll give a nice concrete example that also will demonstrate that Turing machines aren't closed under complement. 
@@ -845,7 +922,7 @@ Similarly for recognizable languages, if $A \le_m B$ and $B$ is recognizable the
 
 I think I'll leave things here for now and next post will be lots and lots of examples of reductions because it's a cool technique that's worth savoring.
 \section{More on Reductions}
-\label{sec-15}
+\label{sec-16}
 Let's go back and redo our results about regular languages except in terms of reductions. We'll try to be very formal for this section. To start with, we recall the machine that decides the language $A_{DFA} = \{(M,w) | M \text{ accepts the string } w\}$, which is 
 
 On input $(M,w)$ where $M$ is a DFA then 
@@ -908,7 +985,7 @@ On input $s$ then
 
 and that certainly seemed reasonable at first, because if $(M,w)$ is in $A_{TM}$ then the language for $R$ will be empty. Ah, but this is where the iff part of things is important because while things are all well and good if $M$ actually \emph{rejects} the string $w$, iff $M$ \emph{loops} on $w$ then $L(R)$ is going to be the empty language even though $M$ didn't accept the string. Oops! 
 \section{Time Complexity}
-\label{sec-16}
+\label{sec-17}
 So in this post we're going to try and give a smattering of the important parts about time complexity that will actually be covered in lecture. This will be fairly high-level and overview-y because, honestly, most of the time this course never gets to this material anyway so I figure even just spending an entire two-hour lecture on it is doing better than typical. This also leaves room for a solid two-hour introduction to the lambda calculus as a final treat for those interested and a lecture off for those who ain't.
 
 All that being said, let's begin.
@@ -948,7 +1025,7 @@ The final topic I want to hit briefly is the idea of $NP$-hard and $NP$-complete
 
 I think that's pretty much all I'm hoping to cover in this very very sketchy overview of time complexity. The one lecture after this will be the untyped lambda calculus, just for fun.
 \section{The Lambda calculus}
-\label{sec-17}
+\label{sec-18}
 Having seen Turing machines and talked a bit about what they are, what it means for a language to be Turing recognizable or decideable, and even spending a little bit of time talking about time complexity for Turing machines, let's finish out the course with a bit on a different notion of computation that is equivalent to the Turing machines: the lambda calculus.
 
 The lambda calculus was, essentially, invented by Alonzo Church for investigations into constructive logic but while it turned out that the untyped lambda calculus, as a proof theory for a logic, is entirely inconsistent and unsuited to the task it \emph{did} turn out that the lambda calculus describes all computable functions in the same way that the Turing machines do. We know this for certain because we can encode any Turing machine as a program in the lambda calculus and visa-versa, so they have equivalent power. The lambda calculus, though, has a very different character than Turing machines. While Turing machines were obviously finitary machines that had a nice, physical, interpretation that intuitively makes sense as a computable process, the lambda calculus is more akin to a real programming language whose rules, while simple, aren't obviously realizable in a computable way. (When I say "obviously realizable" I mean that it's not clear just by glancing at the rules that there isn't anything non-computable going on, since we know quite well how to interpret the rules computably as there are many many ways to write a program that is an interpreter for the lambda calculus. I've written at least a dozen such interpreters so far.)

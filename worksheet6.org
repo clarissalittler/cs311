@@ -1,8 +1,10 @@
 #+TITLE: In-Class Worksheet 6: Context Free Grammars
 #+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
 
 Write context free grammars for the following languages
 
 + { w | w ends with 3 1s or starts with 3 0s}
 + { w | w has twice as many 1s as 0s}
 + { 0^n 1^m 2^k | m is greater than n or k}
++ { w | w is an even length palindrome }

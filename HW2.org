@@ -1,3 +1,5 @@
+#+OPTIONS: toc:nil
+
 * HW 2: Context-Free Languages
 ** Problem 1
    + Using the pumping lemma, show that the language $\{ w | w \text{ is not a palindrome} \}$ is not regular. Hint: we know that the regular languages are closed under complement.

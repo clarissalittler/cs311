@@ -6,6 +6,9 @@
 #+OPTIONS: toc:nil
 
 These notes were originally a series of blog posts I posted on, so they still read that way at the moment. Eventually future iterations will have the lecture notes be better formatted and more like a short book. 
+
+(original posts can be found at http://inconsistentuniverse.wordpress.com/tag/lecture/)
+
 * What is computation?
 What is computation? That's a question I'd like to discuss a bit so we can set up the trajectory of this class. Now, [[http://en.wikipedia.org/wiki/Computation][wikipedia]] defines computation as "any type of calculation or use of computing technology in information processing", which is fine but rather dry and not illustrative. A loose, but perhaps evocative, definition of computation would be "anything you can do with a finite amount of data, using a finite number of rules, in a finite length of time". This definition encompasses a variety of thigns such as 
    + doing arithmetic problems by hand with a pen and paper
@@ -179,6 +182,35 @@ or in words $\delta^N$ has no $\epsilon$ transitions and on a non-epsilon input,
      For this lecture, we'll elide proving that this construction is correct but hopefully it is clear that this follows the prior description of how we'll simulate non-determinism with a DFA. 
 
      Here I think I'll end things until my next post.
+* NFAs and Non-deterministic Choice
+  [2014-10-13 Mon] when I originally wrote these notes I neglected to explain how non-determinism and non-deterministic choice work as a computational model. First off, what do we mean by non-deterministic /choice/. Well, it comes from viewing non-determinism as a sequence of /choices/ among the various possible moves allowed. For example, if you consider the NFA we did in class
+
+#+BEGIN_SRC dot :file NonDet.png :cmdline -Kdot -Tpng :exports results
+  digraph M {
+    rankdir=LR;
+    size="8,5";
+    node [shape = doublecircle]; q2;
+    node [shape = circle];
+    q0 -> q1 [label = "1"];
+    q1 -> q1 [label = "0"];
+    q1 -> q2 [label = "1,0"];
+  }
+#+END_SRC
+
+and consider how the string processes the string "100":
+
++ we start in the state q0 with the string "100"
++ we next progress to the state/string pair (q1,00)
++ Now we have a choice to move to either of
+  + (q2,0)
+  + (q1,0)
++ If we move to (q2,0) we have /no/ additional moves and since we're not in a final state /with/ the entire string processed, then we're in a dead state
++ If we move to (q1,0) we have one possible move to (q2,\epsilon) and we're done
+
+I like to think of non-deterministic choice as a kind of game, where you're trying to make the right sequence of choices that you win. If there is /at least one/ right set of choices, then we say that the string is accepted by the machine. If there is no way to win the game, then the string is rejected.
+
+As I said earlier in the notes, if it helps then try thinking of it more as a kind of [[http://en.wikipedia.org/wiki/Backtracking][backtracking]] algorithm where you systematically try all of the possible sequences of choices until you've either found one that works /or/ you've exhausted the set of possibilities. You might have some objections about how \epsilon rules work and if that means you can create infinite loops, but it's pretty easy to design a notion of search that will be smart enough to avoid loops that don't consume any piece of the string.
+
 * Regular Operations, Regular Expressions, and RegExp/NFA equivalence
     Continuing from last time, we've shown that NFAs and DFAs are equivalent. We're now well prepared to discuss what operations /other/ than union and intersection that the regular languages are closed under. Having two different ways of representing the regular languages means that we can choose to present our constructions in terms of DFAs /or/ NFAs, depending on which is easier. 
 

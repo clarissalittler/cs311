@@ -1,13 +1,10 @@
-#+TITLE: In-Class Worksheet 8: The Start of Turing Machines
+#+TITLE: In-Class Worksheet 8: Context-Free Pumping Lemma
 #+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
 
-* Running a Turing Machine
-Practice executing the Turing machine given in the figure on the inputs below, to get a feel for how Turing machines operate.
-(insert figure for Turing machine that scans for 2^n 0s)
-+ 000
-+ 0000
-+ 000000
-* Informal Description Practice
-Write down the /informal/ description for a Turing machine that decides the following language: {S(n)=m | m,n are binary numbers \wedge m = n+1} (where S, (,) and = are just /symbols/ in the alphabet)
+Try to prove, using the context-free pumping lemma, that the following languages are not context-free.
 
-and then test it on a few inputs
++ { ww^{R}w | w \in {0,1}^* }
++ {m+n=p | where m,n,p are binary strings and m + n = p /as numbers/}
++ { 0^{2^n} | n \ge 0} (this one is a bit tricky)
+

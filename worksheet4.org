@@ -1,6 +1,6 @@
 #+TITLE: In-Class Worksheet 4: Regular Expressions
 #+AUTHOR: Clarissa Littler
-#+OPTIONS: toc: nil
+#+OPTIONS: toc:nil
 
 * RegExps
   Write regular expressions for the following languages (you're allowed to use $\Sigma^*$ as a shorthand)

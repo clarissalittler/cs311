@@ -1,12 +1,13 @@
 #+TITLE: In-Class Worksheet 5: Fun with The Pumping Lemma
 #+AUTHOR: Clarissa Littler
-#+OPTIONS: toc: nil
+#+OPTIONS: toc:nil
 
 * Pumping Lemma 
 Prove, using the pumping lemma, that the following languages are not regular: 
 
 + {w | w has an twice as many 1s as 0s} 
-+ (\Sigma = {0,1,2}) {0^n1^m2^k | where m must be bigger than n or k}
++ (\Sigma = {0,1,2}) {0^n 1^m 2^k | where m must be bigger than n or k}
++ {m+n=k| m,n,k are all binary numbers and m + n = k /as numbers/} (Note that in this problem \Sigma = {0,1,+,=})
 
 Then write down a couple of languages and either define a DFA, NFA, or RegExp for them *or* prove they're not regular.
 
