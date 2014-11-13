@@ -135,8 +135,6 @@
     + Proving a language recognizable with computable reductions
     + Proving a language undecidable
     + Proving a language unrecognizable
-  + Admin:
-    + HW 3 due
 * Lecture 15: 11/20
   + Topics: 
     + Sipser 2nd ed pgs 247 - 256
@@ -147,6 +145,8 @@
     + O-notation
     + Complexity class of P
     + Examples of problems in P
+  + Admin:
+    + HW 3 due
 * Lecture 16: 11/25
   + Topics: 
     + Sipser 2nd ed pgs 256 - 294 (just skim 283 on)
@@ -163,8 +163,9 @@
     + Evaluation rules
     + Church encodings
     + Y-combinator
-  + Admin:
-    + Homework 4 due
 * Lecture 18: 12/4
   + Course Review
+  + Admin:
+    + Homework 4 due
+
 * Final Exam: 12/9 5:30-7:20pm

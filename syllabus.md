@@ -189,8 +189,6 @@
     -   Proving a language recognizable with computable reductions
     -   Proving a language undecidable
     -   Proving a language unrecognizable
--   Admin:
-    -   HW 3 due
 
 # Lecture 15: 11/20<a id="sec-15" name="sec-15"></a>
 
@@ -203,6 +201,8 @@
     -   O-notation
     -   Complexity class of P
     -   Examples of problems in P
+-   Admin:
+    -   HW 3 due
 
 # Lecture 16: 11/25<a id="sec-16" name="sec-16"></a>
 
@@ -223,11 +223,11 @@
     -   Evaluation rules
     -   Church encodings
     -   Y-combinator
--   Admin:
-    -   Homework 4 due
 
 # Lecture 18: 12/4<a id="sec-18" name="sec-18"></a>
 
 -   Course Review
+-   Admin:
+    -   Homework 4 due
 
 # Final Exam: 12/9 5:30-7:20pm<a id="sec-19" name="sec-19"></a>
