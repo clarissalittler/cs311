@@ -1,4 +1,4 @@
-% Created 2014-11-13 Thu 17:55
+% Created 2014-11-13 Thu 17:57
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,22 +30,15 @@
 \item A \emph{Turing machine with left-reset} is similar to an ordinary Turing machine but the transition function has the form
 
 $\delta : Q \times \Gamma \to Q \times \Gamma \times \{ R, RESET \}$
-\end{enumerate}
 
 The semantics of the $RESET$ move is that the Turing machine will go all the back to the left-most side of the tape, instead of just moving a step left. Prove that Turing machines with left reset are equivalent to ordinary Turing machines. To do this you'll need to 
 
 \begin{itemize}
-\item show that you can turn a Turing machine with left reset into an ordinary Turing machine
+\item show that you can turn a Turing machine with left reset into an ordinary Turing machine (the hard part)
+\item show that you can turn an ordinary Turing machine into a Turing machine with left reset (the easy part)
 \end{itemize}
-(the hard part)
-\begin{itemize}
-\item show that you can turn an ordinary Turing machine into a Turing machine with left reset
-\end{itemize}
-(the easy part)
-
 The easiest way to do this is to simulate one type of movement with the other.
 
-\begin{enumerate}
 \item Show, by construction, that the Turing-decidable languages are closed under
 
 \begin{enumerate}

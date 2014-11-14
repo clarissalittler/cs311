@@ -6,14 +6,11 @@
       
       $\delta : Q \times \Gamma \to Q \times \Gamma \times \{ R, RESET \}$
 
-The semantics of the $RESET$ move is that the Turing machine will go all the back to the left-most side of the tape, instead of just moving a step left. Prove that Turing machines with left reset are equivalent to ordinary Turing machines. To do this you'll need to 
+     The semantics of the $RESET$ move is that the Turing machine will go all the back to the left-most side of the tape, instead of just moving a step left. Prove that Turing machines with left reset are equivalent to ordinary Turing machines. To do this you'll need to 
 
-   + show that you can turn a Turing machine with left reset into an ordinary Turing machine 
-(the hard part)
-   + show that you can turn an ordinary Turing machine into a Turing machine with left reset 
-(the easy part)
-
-The easiest way to do this is to simulate one type of movement with the other.
+   + show that you can turn a Turing machine with left reset into an ordinary Turing machine (the hard part)
+   + show that you can turn an ordinary Turing machine into a Turing machine with left reset (the easy part)
+   The easiest way to do this is to simulate one type of movement with the other.
 
 2.  Show, by construction, that the Turing-decidable languages are closed under
 
