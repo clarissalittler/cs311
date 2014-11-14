@@ -1,5 +1,7 @@
-* HW 3: Turing Machines
-** Problem 1
+#+TITLE: HW 3: Turing Machines
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+1. 
       A /Turing machine with left-reset/ is similar to an ordinary Turing machine but the transition function has the form
       
       $\delta : Q \times \Gamma \to Q \times \Gamma \times \{ R, RESET \}$
@@ -12,25 +14,23 @@ The semantics of the $RESET$ move is that the Turing machine will go all the bac
 (the easy part)
 
 The easiest way to do this is to simulate one type of movement with the other.
-** Problem 2   
-Show, by construction, that the Turing-decidable languages are closed under
+
+2.  Show, by construction, that the Turing-decidable languages are closed under
 
    1. union
    2. intersection
    3. complement
 
-** Problem 3
+3.
    Give an informal description of the following languages
    
-   + $\{ w | w \text{ contains twice as many 0s as 1s} \}$
-   + $\{ w | w \text{ has matching parentheses and a length that's a power of 2}\}$
+    + $\{ w | w \text{ contains twice as many 0s as 1s} \}$
+    + $\{ w | w \text{ has matching parentheses and a length that's a power of 2}\}$
      
-** Problem 4
-Show, by construction, that the Turing /recognizable/ languages are closed under
+4. Show, by construction, that the Turing /recognizable/ languages are closed under
 
   + Kleene star
   + concatenation
   + reversal
-
-Are the /recognizable/ languages closed under complement? If not, can you give a counter-example?
+  Are the /recognizable/ languages closed under complement? If not, can you give a counter-example?
 
