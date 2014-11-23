@@ -1,0 +1,70 @@
+#+TITLE: In-Class Worksheet 11: Computable Reductions
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+
+General notes on the solutions here: try to prove to yourself that the reductions defined are, in fact, reductions by testing to make sure that for any reduction /from/ A /to/ B that a string is in A if and only if its image under the reduction is in B.
+
+
+Construct the following reductions
+
++ A computational reduction from the ordinary halting problem to H'_{TM} = { M | M halts on every input}
+  Answer: We define this reduction as follows
+  #+BEGIN_EXAMPLE
+    R := On input (M,w)
+      1. Define TM M' := On input y:
+                         1. Run M(y)
+                         2. if M(y) then accept else loop
+      2. Write M' to tape 
+  #+END_EXAMPLE
+
++ A computational reduction /from/ the language { 0^{2^n} | n \ge 0} to the language {0} (this is actually an example of a more general principle)
+  Answer: 
+  #+BEGIN_EXAMPLE
+    R := On input w:
+      1. Run decider D(w) where D is the decider for the powers of 2 language
+      2. If D(w) Then write 0 to tape Else write 1 to tape
+  #+END_EXAMPLE
+
++ A reduction from the language {(N,w) | N is an NFA that accepts w} /to/ the language {(M,w) | M is a DFA that accepts w}
+  #+BEGIN_EXAMPLE
+    R := On input (N,w): 
+      1. Run NFA -> DFA conversion on N to produce D
+      2. Write (D,w) to tape
+  #+END_EXAMPLE
++ A reduction from the E_{TM} = { M | L(M) = \emptyset} to L_{TM} = { M | M loops on every input}
+  #+BEGIN_EXAMPLE
+    R := On input M:
+      1. Define TM M' := On input w:
+                         1. Run M(w)
+                         2. If M(w) Then accept Else loop
+      2. Write M' to tape
+  #+END_EXAMPLE
++ Construct a reduction from $\overline{A_{TM}}$ to E_{TM}
+  #+BEGIN_EXAMPLE
+    R := On input (M,w): 
+      1. Define TM M' := On input y:
+                         1. Run M(w)
+                         2. If M(w) Then accept Else Reject
+      2. Write M' to tape
+  #+END_EXAMPLE
+
++ Prove that $A_{TM} \le \overline{E_{TM}}$
+  We can actually use the same reduction above, which is the reason why, in general, $A \le_m B$ implies $\overline{A} \le_m \overline{B}$
+
++ Prove that ${0^n1^n} \le {0^n}$
+  This is basically the same trick as above
+  #+BEGIN_EXAMPLE
+    R := On input w:
+      1. Run PDA corresponding to {0^n1^n} on w
+      2. If it accepts, write 0 to tape, otherwise write 1 to tape
+  #+END_EXAMPLE
+  
++ Prove that EQ_{TM} is not decidable
+  The idea here is that we can show that EQ_{TM} is not decidable by reducing a language that isn't decidable /to/ it, by which we're going to reduce E_{TM} to EQ_{TM}.
+  #+BEGIN_EXAMPLE
+    R := On input M;
+      1. Define TM M' := On input w:
+                         1. reject
+      2. Write (M,M') to tape  
+  #+END_EXAMPLE
+  in other words, we reduce E_{TM} to EQ_{TM} by comparing our candidate member of $E_{TM}$ against a language we /know/ rejects all inputs.

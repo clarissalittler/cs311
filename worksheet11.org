@@ -7,3 +7,10 @@ Construct the following reductions
 + A computational reduction from the ordinary halting problem to H'_{TM} = { M | M halts on every input}
 + A computational reduction /from/ the language { 0^{2^n} | n \ge 0} to the language {0} (this is actually an example of a more general principle)
 + A reduction from the language {(N,w) | N is an NFA that accepts w} /to/ the language {(M,w) | M is a DFA that accepts w}
++ A reduction from the E_{TM} = { M | L(M) = \emptyset} to L_{TM} = { M | M loops on every input}
++ Construct a reduction from $\overline{A_{TM}}$ to E_{TM}
+
+
++ Prove that $A_{TM} \le \overline{E_{TM}}$
++ Prove that ${0^n1^n} \le {0^n}$
++ Prove that EQ_{TM} is not decidable
