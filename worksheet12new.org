@@ -1,0 +1,13 @@
+#+TITLE: In-Class Worksheet 12: Polynomial Time Reductions and NP Problems
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+
+Give a polynomial time non-deterministic Turing machine and verifier for the following problems
+
++ {(G , s , t) | G has a Hamiltonian path from s to t}
++ { n | n is not a prime number }
++ { (S,t) | S is a set of numbers that has a subset that sums to t }
++ { (M,w,n) | M is a non-deterministic Turing machine, w is a string, and M has a computational path that accepts w in n steps or under }
+
+Is the following language decidable?
+{ (x , P) | P is a C-program and x is a variable that gets initialized during some execution path}
