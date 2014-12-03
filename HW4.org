@@ -1,11 +1,9 @@
-* HW 4: Computable Reductions
-** Problem 1
-   Show that the language $ALL_{TM}$, defined as $\{M | \text{ where } M \text{ is a TM and } L(M) = \Sigma^*\}$, is undecidable.
-** Problem 2
-   A *useless state* in a Turing machine is defined as a state that is never entered by the machine on any input. Consider the problem of detecting if a Turing machine has a useless state. Formulate this problem /as a language/ and show that the language is undecidable.
-** Problem 3
-   If $A \le_m B$ and $B$ is a regular language, is $A$ necessarily a regular language? Justify your answer.
-** Problem 4
-   Let $B$ be a decidable language with $B \neq \emptyset$ and $B \neq \Sigma^*$, then if $A$ is decidable define a computational reduction $A \le_m B$.
-** Problem 5
-   (from Sipser) Let Double-SAT be the language { \phi | \phi has at least two satisfying assignments }. Show, by polynomial time reduction, that Double-SAT is NP-complete.
+#+TITLE: HW 4: Computable Reductions
+#+AUTHOR: Clarissa Littler
+#+OPTIONS: toc:nil
+
+1. Show that the language $ALL_{TM}$, defined as $\{M | \text{ where } M \text{ is a TM and } L(M) = \Sigma^*\}$, is undecidable.
+2. A *useless state* in a Turing machine is defined as a state that is never entered by the machine on any input. Consider the problem of detecting if a Turing machine has a useless state. Formulate this problem /as a language/ and show that the language is undecidable.
+3. If $A \le_m B$ and $B$ is a regular language, is $A$ necessarily a regular language? Justify your answer.
+4. Let $B$ be a decidable language with $B \neq \emptyset$ and $B \neq \Sigma^*$, then if $A$ is decidable define a computational reduction $A \le_m B$.
+5. (from Sipser) Let Double-SAT be the language { \phi | \phi has at least two satisfying assignments }. Show, by polynomial time reduction, that Double-SAT is NP-complete.
