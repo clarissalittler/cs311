@@ -13,7 +13,7 @@ Construct the following reductions
     R := On input (M,w)
       1. Define TM M' := On input y:
                          1. Run M(y)
-                         2. if M(y) then accept else loop
+                         2. if M(y) halts then accept else loop
       2. Write M' to tape 
   #+END_EXAMPLE
 
