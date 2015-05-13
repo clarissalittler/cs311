@@ -19,7 +19,7 @@
    3. complement
 
 3.
-   Give an informal description of the following languages
+  Give an informal description of the following languages
    
     + $\{ w | w \text{ contains twice as many 0s as 1s} \}$
     + $\{ w | w \text{ has matching parentheses and a length that's a power of 2}\}$

@@ -125,7 +125,7 @@
     + Computable reductions
     + Examples of computable reductions
     + Properties of computable reductions
-    + Worksheet 10: Computable Functions and Reductions
+    + Worksheet 11: Computable Functions and Reductions
 * Lecture 14: 11/18
   + Topics: 
     + Sipser 2nd ed pgs 206 - 211
