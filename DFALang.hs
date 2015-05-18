@@ -6,7 +6,6 @@ import Text.Parsec.Char
 import Text.Parsec.String
 import Text.Parsec.Language
 
-
 data Sym = Char Char | Under
 type Final = Bool
 
@@ -28,11 +27,23 @@ error := cond
          _ -> error
          done
 
-f := cond 
-      a -> f,end
+f := cond (end) 
+      a -> f
       _ -> error
      done
+
+we need a kind of guardedness condition in order to avoid bad infinite loops, all infinite loops in this language will have to be a kind of recursive call like
+
+f := g
+g := f
+
+if at any point there's a 'cond' then we know some portion of the string will be consumed and everything is going to be okay
+
+There's two easy ways we can do this: the first is to assert that /all/ declarations must start with a 'cond', in which case we know that every time that we make a call to another function then it's obvious that we're progressing towards termination.
+
+That's definitely the easiest way, another slightly more complicated way is that we can really traverse the tree and just check to make sure that there's not going to be a self-referential call without having a 'cond' in place. That's going to end up being a little redundant since, in this incredibly simple language, there's really no reason to /not/ start your declaration with a cond. So we need to install a syntactic check for that when it comes to a declaration 
 -}
+
 
 evalExp :: [(String,Exp)] -> Exp -> String -> Result
 evalExp ds (Call d) s = case lookup d ds of
@@ -70,6 +81,7 @@ comma = T.comma lang
 semi = T.semi lang
 whiteSpace = T.whiteSpace lang
 reservedOp = T.reservedOp lang
+parens = T.parens lang
 
 idenChar = do
   i <- identifier
@@ -78,7 +90,6 @@ idenChar = do
 parseSym :: Parser Sym
 parseSym = (Char `mapM` idenChar) <|> (reservedOp "_" >> return Under)
   
-
 parseDfa :: Parser Dfa
 parseDfa = choice [DExp `mapM` try parseExp, parseOr, parseAnd]
 
@@ -107,5 +118,22 @@ parseCall = do
 parseCond :: Parser Exp
 parseCond = do
   reserved "cond"
+  isFinal <- option False (parens (reserved "end") >> return True) 
   newline
-  a <- parseSym
+  cs <- many1 parseCase
+  return $ Cond isFinal cs
+
+parseCase :: Parser (Sym, Exp)
+parseCase = do
+  s <- parseSym
+  reservedOp "->"
+  e <- parseExp
+  return $ (s,e)
+
+parseDecl :: Parser (Decl, Exp)
+parseDecl = do
+  i <- identifier
+  reservedOp ":="
+  e <- parseCond
+  return $ (i , e)
+  
