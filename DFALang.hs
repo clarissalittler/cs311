@@ -6,6 +6,8 @@ import Text.Parsec.Char
 import Text.Parsec.String
 import Text.Parsec.Language
 
+import Control.Monad
+
 data Sym = Char Char | Under
 type Final = Bool
 
@@ -49,11 +51,11 @@ evalExp :: [(String,Exp)] -> Exp -> String -> Result
 evalExp ds (Call d) s = case lookup d ds of
                           Nothing -> Fail
                           Just e -> evalExp ds e s
-evalExp ds "" (Cond rules True) = End
-evalExp ds "" (Cond rules False) = Fail
-evalExp ds (c : cs) (Cond rules _) = case evalRules c rules of
+evalExp ds (Cond rules True) "" = End
+evalExp ds (Cond rules False) "" = Fail
+evalExp ds (Cond rules _) (c : cs) = case evalRules c rules of
                                        Nothing -> Fail
-                                       Just e -> evalExp ds cs e
+                                       Just e -> evalExp ds e cs
     where evalRules c [] = Nothing
           evalRules c (( Under, e) : rs) = Just e
           evalRules c (( Char c', e) : rs) = if c == c' then Just e else evalRules c rs
@@ -83,15 +85,16 @@ whiteSpace = T.whiteSpace lang
 reservedOp = T.reservedOp lang
 parens = T.parens lang
 
+idenChar :: Parser Char
 idenChar = do
   i <- identifier
   if length i == 1 then return (head i) else mzero
 
 parseSym :: Parser Sym
-parseSym = (Char `mapM` idenChar) <|> (reservedOp "_" >> return Under)
+parseSym = (Char `liftM` idenChar) <|> (reservedOp "_" >> return Under)
   
 parseDfa :: Parser Dfa
-parseDfa = choice [DExp `mapM` try parseExp, parseOr, parseAnd]
+parseDfa = choice [DExp `liftM` try parseExp, parseOr, parseAnd]
 
 parseOr :: Parser Dfa
 parseOr = do
@@ -121,7 +124,7 @@ parseCond = do
   isFinal <- option False (parens (reserved "end") >> return True) 
   newline
   cs <- many1 parseCase
-  return $ Cond isFinal cs
+  return $ Cond cs isFinal
 
 parseCase :: Parser (Sym, Exp)
 parseCase = do
