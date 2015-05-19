@@ -44,6 +44,13 @@ if at any point there's a 'cond' then we know some portion of the string will be
 There's two easy ways we can do this: the first is to assert that /all/ declarations must start with a 'cond', in which case we know that every time that we make a call to another function then it's obvious that we're progressing towards termination.
 
 That's definitely the easiest way, another slightly more complicated way is that we can really traverse the tree and just check to make sure that there's not going to be a self-referential call without having a 'cond' in place. That's going to end up being a little redundant since, in this incredibly simple language, there's really no reason to /not/ start your declaration with a cond. So we need to install a syntactic check for that when it comes to a declaration 
+
+So the format of a valid DFA-Lang file is that it should be a sequence of declarations followed by a single instance of a line such as 
+
+run f /\ g
+or 
+run h \/ (h /\ j)
+etc.
 -}
 
 
@@ -71,8 +78,23 @@ evalDfa ds (DOr d d') s = case evalDfa ds d s of
                             End -> End
                             Fail -> evalDfa ds d' s
 
+-- main handler
+
+runFile :: FilePath -> IO ()
+runFile f = do
+  e <- parseFromFile parseFile f
+  case e of
+    Left err -> print err
+    Right (ds,dfa) -> do
+              putStrLn "Enter a string to run your DFA on:"
+              s <- getLine
+              case evalDfa ds dfa s of
+                End -> putStrLn "accepted"
+                Fail -> putStrLn "rejected"
+
 ---- now we start our parsing
----- we could just use the haskell parsing for this
+---- we could just use the haskell token parser for this, with some slight modifications
+---- those modifications being to the reserved and reservedOp!
 
 lang = haskell
 
@@ -140,3 +162,13 @@ parseDecl = do
   e <- parseCond
   return $ (i , e)
   
+parseRun :: Parser Dfa
+parseRun = do
+  reserved "run"
+  parseDfa
+
+parseFile :: Parser ([(Decl, Exp)] , Dfa)
+parseFile = do
+  ds <- sepEndBy1 parseDecl newline
+  d <- parseRun
+  return (ds, d)
