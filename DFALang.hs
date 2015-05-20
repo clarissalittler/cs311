@@ -9,14 +9,17 @@ import Text.Parsec.Language
 import Control.Monad
 
 data Sym = Char Char | Under
+         deriving Show
 type Final = Bool
 
 data Exp = Cond [(Sym, Exp)] Final
          | Call Decl
+         deriving (Show)
 
 type Decl = String
 
 data Result = End | Fail
+            deriving Show
 
 {- 
    There's a little bit of a problem with the translation from this language to DFAs. It's not a huge one but it is a little bit of a conceptual ugliness that I dislike: there's an implicit epsilon transition when we "call" another expression and that makes the translation a lot less straightfoward than one would like. On the other hand, we already don't have the simplest translation because of our choice to connect machines through ands and ors.
@@ -68,6 +71,7 @@ evalExp ds (Cond rules _) (c : cs) = case evalRules c rules of
           evalRules c (( Char c', e) : rs) = if c == c' then Just e else evalRules c rs
 
 data Dfa = DExp Exp | DAnd Dfa Dfa | DOr Dfa Dfa
+         deriving Show
                     
 evalDfa :: [(String, Exp)] -> Dfa -> String -> Result
 evalDfa ds (DExp e) s = evalExp ds e s
@@ -96,7 +100,7 @@ runFile f = do
 ---- we could just use the haskell token parser for this, with some slight modifications
 ---- those modifications being to the reserved and reservedOp!
 
-lang = haskell
+lang = T.makeTokenParser $ haskellDef { T.reservedNames = ["cond","end", "run"], T.reservedOpNames = ["/\\","\\/","->", ":="]}
 
 identifier = T.identifier lang
 reserved = T.reserved lang
@@ -106,14 +110,18 @@ semi = T.semi lang
 whiteSpace = T.whiteSpace lang
 reservedOp = T.reservedOp lang
 parens = T.parens lang
-
+charLiteral = T.charLiteral lang
+lexeme = T.lexeme lang
+braces = T.braces lang
+{-
 idenChar :: Parser Char
 idenChar = do
   i <- identifier
   if length i == 1 then return (head i) else mzero
+-}
 
 parseSym :: Parser Sym
-parseSym = (Char `liftM` idenChar) <|> (reservedOp "_" >> return Under)
+parseSym = try (Char `liftM` (lexeme alphaNum)) <|> (symbol "_" >> return Under)
   
 parseDfa :: Parser Dfa
 parseDfa = choice [DExp `liftM` try parseExp, parseOr, parseAnd]
@@ -144,8 +152,7 @@ parseCond :: Parser Exp
 parseCond = do
   reserved "cond"
   isFinal <- option False (parens (reserved "end") >> return True) 
-  newline
-  cs <- many1 parseCase
+  cs <- braces (many1 parseCase)
   return $ Cond cs isFinal
 
 parseCase :: Parser (Sym, Exp)
@@ -169,6 +176,6 @@ parseRun = do
 
 parseFile :: Parser ([(Decl, Exp)] , Dfa)
 parseFile = do
-  ds <- sepEndBy1 parseDecl newline
+  ds <- many1 parseDecl
   d <- parseRun
   return (ds, d)

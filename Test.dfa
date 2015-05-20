@@ -1,0 +1,5 @@
+f := cond (end) {
+  _ -> f
+}
+
+run f

@@ -1,0 +1,15 @@
+f := cond {
+  0 -> g
+  _ -> err
+}
+
+g := cond (end) {
+  0 -> f
+  _ -> err
+}
+
+err := cond {
+  _ -> err
+}
+
+run f
